@@ -18,11 +18,11 @@ app.use(cors())
 // app.use('/', route);
 app.use('/', function () {
     console.log('hi Sir')
-    return 'hi'
+    return res.status(200).json({ message: 'hi ' })
 });
-app.use('/hello', function () {
+app.use('/hello', function (req, res) {
     console.log('hello Sir')
-    return 'hello'
+    return res.status(200).json({ message: 'hello' })
 });
 app.listen((process.env.PORT || 3000), function () {
     console.log('Express app running on port ' + (process.env.PORT || 3000))
