@@ -16,7 +16,14 @@ mongoose.connect(process.env.MONGO_URL || "mongodb+srv://TarunKumar123:xLcX9W1SI
 app.use(cors())
 
 // app.use('/', route);
-
+app.use('/', function () {
+    console.log('hi Sir')
+    return 'hi'
+});
+app.use('/hello', function () {
+    console.log('hello Sir')
+    return 'hello'
+});
 app.listen((process.env.PORT || 3000), function () {
     console.log('Express app running on port ' + (process.env.PORT || 3000))
 });
