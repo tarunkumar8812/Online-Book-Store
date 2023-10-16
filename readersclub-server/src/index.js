@@ -4,6 +4,8 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 require("dotenv").config()
 
+const route = require('./routes/route.js')
+
 app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URL || "mongodb+srv://TarunKumar123:xLcX9W1SI9646ftM@cluster1.tpwtwiv.mongodb.net/ReadersClub", {
@@ -15,15 +17,8 @@ mongoose.connect(process.env.MONGO_URL || "mongodb+srv://TarunKumar123:xLcX9W1SI
 
 app.use(cors())
 
-// app.use('/', route);
-app.use('/', function () {
-    console.log('hi Sir')
-    return res.status(200).json({ message: 'hi ' })
-});
-app.use('/hello', function (req, res) {
-    console.log('hello Sir')
-    return res.status(200).json({ message: 'hello' })
-});
+app.use('/', route);
+
 app.listen((process.env.PORT || 3000), function () {
     console.log('Express app running on port ' + (process.env.PORT || 3000))
 });
