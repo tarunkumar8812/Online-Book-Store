@@ -1,0 +1,27 @@
+/* nav{
+background-color: aqua;
+padding: 10px;
+min-height: 60px;
+} */
+
+.logo_img{
+    width: 40px;
+    border-radius: 50%;
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    nav {
+        /* padding: 0 10px; */
+        position: relative;
+        z-index: 5;
+    }
+    .logo_img{
+        width: 40px;
+        border-radius: 50%;
+       display: block;
+    }
+    .logo h2{
+        display: none;
+    }
+}
