@@ -84,7 +84,7 @@ const Navbar = () => {
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
               >
-                <MenuIcon fontSize='large' sx={{ color: 'white' }}></MenuIcon>
+                <MenuIcon fontSize='medium' sx={{ color: 'white' }}></MenuIcon>
               </IconButton>
               <Menu
                 anchorOrigin={{
@@ -100,13 +100,13 @@ const Navbar = () => {
                   'aria-labelledby': 'basic-button',
                 }}
               >
-                <NavLink to='/login' style={{ textDecoration: 'none' }}>  <MenuItem sx={{color:'black'}} onClick={handleClose}>LOGIN
+                <NavLink to='/login' style={{ textDecoration: 'none' }}>  <MenuItem sx={{color:'black',fontSize:"12px"}} onClick={handleClose}>LOGIN
                 </MenuItem>
                 </NavLink>
-                <NavLink to='/signup' style={{ textDecoration: 'none' }}>  <MenuItem sx={{color:'black'}} onClick={handleClose}>SIGNUP
+                <NavLink to='/signup' style={{ textDecoration: 'none' }}>  <MenuItem sx={{color:'black',fontSize:"12px"}} onClick={handleClose}>SIGNUP
                 </MenuItem>
                 </NavLink>
-                <NavLink to='/about' style={{ textDecoration: 'none' }}>  <MenuItem sx={{color:'black'}} onClick={handleClose}>ABOUT
+                <NavLink to='/about' style={{ textDecoration: 'none' }}>  <MenuItem sx={{color:'black',fontSize:"12px"}} onClick={handleClose}>ABOUT
                 </MenuItem>
                 </NavLink>
               </Menu>

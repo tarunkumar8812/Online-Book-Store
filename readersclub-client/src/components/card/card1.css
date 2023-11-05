@@ -1,0 +1,112 @@
+.slider{
+
+    margin: 10px 0 ;
+    background: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    width: 100%;
+
+}
+
+.cards{
+    display: flex;
+}
+.slider_header{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 20px ;
+}
+
+.heading{
+    margin: 0;
+    color:orange
+}
+
+.book_box{
+    position: relative;
+    border: 1px solid grey;
+    width: 150px;
+    height: 280px;
+    margin: 10px 15px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(226, 226, 226, 1) 100%);
+}
+
+.book_box:hover {
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    cursor: pointer;
+
+}
+.book_img{
+    width: 130px;
+    height: 180px;
+    overflow: hidden;
+    /* background-color: brown; */
+}
+.book_img  img {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 2px;
+}
+
+.book_details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+p {
+    text-transform: capitalize;
+    align-self: center;
+    word-wrap: normal;
+
+}
+
+
+.book_title {
+    color: black;
+    font-size: 14px;
+    margin: 0;
+}
+.book_author{
+    color: gray;
+    font-size: 12px;
+    margin: 0;
+}
+
+.book_prices {
+    display: flex;
+    gap: 10px;
+}
+
+.discounted_price {
+    color: red;
+}
+
+.discounted_price {
+    font-size: 18px;
+}
+
+
+.original_price {
+    font-size: 12px;
+    text-decoration: line-through;
+}
+
+.book_discount {
+    position: absolute;
+    top: -25px;
+    right:-10px;   
+    width: 35px;
+    height: 35px;
+    background-color: red;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
