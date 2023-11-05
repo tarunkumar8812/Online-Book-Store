@@ -1,16 +1,17 @@
 .slider{
 
-    margin: 10px 0 ;
-    background: whitesmoke;
+    margin: 10px auto ;
+    background: rgb(248, 248, 248);
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
-    width: 100%;
-
+    width: 97vw;
+    max-width: 1600px
 }
 
 .cards{
     display: flex;
+
 }
 .slider_header{
     display: flex;
@@ -20,13 +21,16 @@
 
 .heading{
     margin: 0;
-    color:orange
+    color:orange;
+    text-transform: capitalize;
+    
 }
 
 .book_box{
     position: relative;
     border: 1px solid grey;
     width: 150px;
+    max-width:150px ;
     height: 280px;
     margin: 10px 15px;
     padding: 5px;
@@ -72,6 +76,7 @@ p {
     color: black;
     font-size: 14px;
     margin: 0;
+    text-wrap: wrap;
 }
 .book_author{
     color: gray;

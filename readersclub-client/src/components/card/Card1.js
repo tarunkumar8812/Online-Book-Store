@@ -2,10 +2,15 @@
 import React, { useEffect, useState } from 'react'
 import './card1.css'
 import { useNavigate } from 'react-router-dom'
-import { Button, IconButton } from '@mui/material'
+import { Button, IconButton, Rating } from '@mui/material'
 import { ArrowBack, ArrowForward } from '@mui/icons-material'
-const Card1 = ({ heading, data }) => {
+
+
+const Card1 = ({ heading, data, rating }) => {
   const navigate = useNavigate()
+
+
+  const [seeAll, setSeeAll] = useState("")
 
   // see all button logic
   const handleFilter = () => {
@@ -15,8 +20,14 @@ const Card1 = ({ heading, data }) => {
   }
 
   const handleClick = (title, id) => {
-    navigate(`/book/${title} ${id}`)
+    navigate(`/book/${title} ${id}`, { state: id })
   }
+
+  const handleSeeAll = (genre) => {
+    navigate(`/list`, { state: genre })
+  }
+
+
 
 
   return (
@@ -26,7 +37,7 @@ const Card1 = ({ heading, data }) => {
         <div className='slider_header'>
           <h2 className='heading'>{heading}</h2>
           <div>
-            <Button>See All</Button>
+            <Button onClick={() => handleSeeAll(heading)}>See All</Button>
             <IconButton color='info'><ArrowBack></ArrowBack></IconButton>
             <IconButton color='info'><ArrowForward></ArrowForward></IconButton>
           </div>
@@ -55,7 +66,9 @@ const Card1 = ({ heading, data }) => {
                   </div>
 
                   {/* <p className="">{book?.soldCopies || 'N/A'} </p> */}
-
+                  {/* <p className="">Ratings - {book?.ratings || 'N/A'} </p> */}
+                  {rating && <Rating name="read-only" value={book?.ratings || 1} size='small' readOnly />
+                  }
                 </div>
 
 
