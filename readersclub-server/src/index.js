@@ -1,9 +1,9 @@
 const express = require('express');
+const route = require('./routes/route.js')
+const moment = require("moment")
 const app = express();
 const mongoose = require('mongoose')
-const moment = require("moment")
 const cors = require('cors')
-const route = require('./routes/route.js')
 require("dotenv").config()
 
 app.use(express.json());
@@ -23,7 +23,12 @@ app.use(
 );
 app.use(cors())
 
-app.use('/', route);
+
+app.use('/', (req, res) => {
+    return res.status(200).json({ status: true, message: "Online Book Store Server is working..." })
+})
+
+app.use('/user', route);
 
 app.listen((process.env.PORT || 5000), function () {
     console.log('Express app running on port ' + (process.env.PORT || 5000))

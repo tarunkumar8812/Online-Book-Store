@@ -11,9 +11,13 @@ const Content = () => {
   useEffect(() => {
     const fetchData = async () => {
       // api calling using axios
+      console.log('res.data.bookList');
       // const res = await axios.get(`https://bookmanagementserver.onrender.com/user/getAllBooks`)
-      const res = await axios.get(`http://localhost:5000/user/getAllBooks`)
+      const res = await axios.get(`https://readers-club-server.vercel.app/user/getAllBooks`)
+      // const res = await axios.get(`http://localhost:5000/user/getAllBooks`)
       // const res = await res.json
+      console.log(res.data.bookList);
+
       setLoading(false)
       setData(res.data.bookList)
     }
