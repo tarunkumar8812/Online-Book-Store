@@ -2,7 +2,7 @@ import { Box } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Card1 from '../card/Card1'
-
+import './content.css'
 const Content = () => {
 
   // const category = ['history', 'novel', 'biography']
@@ -11,12 +11,10 @@ const Content = () => {
   useEffect(() => {
     const fetchData = async () => {
       // api calling using axios
-      console.log('res.data.bookList');
-      // const res = await axios.get(`https://bookmanagementserver.onrender.com/user/getAllBooks`)
-      const res = await axios.get(`https://readers-club-server.vercel.app/user/getAllBooks`)
+      const res = await axios.get(`https://bookmanagementserver.onrender.com/user/getAllBooks`)
+      // const res = await axios.get(`https://readers-club-server.vercel.app/user/getAllBooks`)
       // const res = await axios.get(`http://localhost:5000/user/getAllBooks`)
-      // const res = await res.json
-      console.log(res.data.bookList);
+      // console.log(res.data.bookList);
 
       setLoading(false)
       setData(res.data.bookList)
@@ -34,7 +32,8 @@ const Content = () => {
     <div>
 
       {loading &&
-        <Box sx={{ width: "100vw", height: "90vh", bgcolor: 'white', display: "flex", justifyContent: "center", alignItems: "center" }} >
+        <Box sx={{ height: "90vh", bgcolor: 'white', display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }} >
+          <h1 className='logo'>  Readers Club</h1>
           <p> Loading...</p>
         </Box>
       }

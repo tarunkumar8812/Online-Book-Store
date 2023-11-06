@@ -34,18 +34,32 @@
 .img_box {
     width: 60px;
     height: 60px;
-    border: 1px solid grey;
+    border: 2px solid rgb(190, 190, 190);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3px;
+}
+.img_box:hover {
+    cursor: pointer;
+}
+
+.img_box img {
+    width: 40px;
+    height: 55px;
+}
+.select {
+    width: 60px;
+    height: 60px;
+    border: 2px solid red;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 3px;
 }
 
-.img_box:hover {
-    cursor: pointer;
-}
 
-.img_box img {
+.select img {
     width: 40px;
     height: 55px;
 }

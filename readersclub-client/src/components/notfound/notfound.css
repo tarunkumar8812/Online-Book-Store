@@ -1,0 +1,41 @@
+.pagenotfound {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    font-size: 60px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.pagenotfound h2 {
+margin: 0;
+padding: 0;
+color: gray;
+margin: 0%;padding: 0;
+background: linear-gradient(90deg,cyan,purple, cyan);
+background-clip: text;
+-webkit-text-fill-color:transparent ;
+}
+
+.pagenotfound h5 {
+margin: 0;
+padding: 0;
+color: gray;
+}
+.pagenotfound p {
+    font-size: 14px;
+    padding: 5px;
+    color: black;
+    text-transform: none;
+    text-align: center;
+
+}
+
+a{
+    color: red;
+    cursor: pointer;
+    font-weight: 500;
+}
+

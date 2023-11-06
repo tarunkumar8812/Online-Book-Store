@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import './card1.css'
 import { useNavigate } from 'react-router-dom'
 import { Button, IconButton, Rating } from '@mui/material'
@@ -10,17 +10,17 @@ const Card1 = ({ heading, data, rating }) => {
   const navigate = useNavigate()
 
 
-  const [seeAll, setSeeAll] = useState("")
+  // const [seeAll, setSeeAll] = useState("")
 
-  // see all button logic
-  const handleFilter = () => {
-    let temp = {}
-    // temp[field] = val
-    navigate("/searchresults", { state: temp })
-  }
+  // // see all button logic
+  // const handleFilter = () => {
+  //   let temp = {}
+  //   // temp[field] = val
+  //   navigate("/searchresults", { state: temp })
+  // }
 
   const handleClick = (title, id) => {
-    navigate(`/book/${title} ${id}`, { state: id })
+    navigate(`/book/${title} ${id}`, { state: { id, no: 0 } })
   }
 
   const handleSeeAll = (genre) => {

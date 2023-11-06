@@ -23,12 +23,7 @@ app.use(
 );
 app.use(cors())
 
-
-app.use('/', (req, res) => {
-    return res.status(200).json({ status: true, message: "Online Book Store Server is working..." })
-})
-
-app.use('/user', route);
+app.use('/', route);
 
 app.listen((process.env.PORT || 5000), function () {
     console.log('Express app running on port ' + (process.env.PORT || 5000))

@@ -9,18 +9,19 @@ import Card2 from '../components/card/Card2'
 const Book = () => {
 
     const location = useLocation()
-    console.log(location);
+    // console.log(location);
 
 
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
+    console.log(loading);
 
 
     useEffect(() => {
         const fetchData = async () => {
             // api calling using axios
-            // const res = await axios.get(`https://bookmanagementserver.onrender.com/user/getAllBooks`)
-            const res = await axios.get(`https://readers-club-server.vercel.app/user/getAllBooks`)
+            const res = await axios.get(`https://bookmanagementserver.onrender.com/user/getAllBooks`)
+            // const res = await axios.get(`https://readers-club-server.vercel.app/user/getAllBooks`)
             // const res = await axios.get(`http://localhost:5000/user/getAllBooks`)
             // const res = await res.json
             setLoading(false)
@@ -29,7 +30,7 @@ const Book = () => {
         fetchData()
     }, [])
 
-    const selectedBook = data.filter((book => book._id === location.state))
+    const selectedBook = data.filter((book => book._id === location?.state?.id))
     const book = selectedBook[0]
 
     const sameGenre = data.filter((books => books?.genre || '' === book?.genre || ""))
@@ -39,7 +40,7 @@ const Book = () => {
     return (
         <>
             <Navbar></Navbar>
-            
+
             <Card2 book={book}></Card2>
 
             <Card1 heading={`${book?.genre?.toUpperCase()}`} field="novel" data={sameGenre}></Card1>

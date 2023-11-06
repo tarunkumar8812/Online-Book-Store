@@ -10,19 +10,24 @@ const Card2 = ({ book }) => {
 
 
     const [image, setImage] = useState(0)
-    console.log(book);
+
+    useEffect(() => {
+        setImage(0)
+    }, [location])
 
     const handleAddToCart = (book) => {
         navigate("/cart", { state: book })
     }
 
     const handleBuyNow = (book) => {
-        if (5 == '5') {
+        if (5 === '5') {
             navigate("/payment")
         } else {
             navigate("/login", { state: "/payment" })
         }
     }
+
+
     return (
         <div style={{ margin: "15px" }}>
             <Box component='div' sx={{ border: "1px solid grey", margin: "auto", padding: "15px", height: "auto", maxWidth: '1600px' }}>
@@ -34,14 +39,14 @@ const Card2 = ({ book }) => {
                         <div className='allImages'>
                             {book?.images.map((img, ind) => {
                                 return (<>
-                                    <div className='img_box'
+                                    <div className={ind === image ? "select" : 'img_box'}
                                         onClick={() => { setImage(ind || 0) }}>
-                                        <img src={img || ""} alt=''></img>
+                                        <img src={img || ""} alt='smallImg'></img>
                                     </div>
                                 </>)
                             })}
                         </div>
-                        <img src={book?.images[image] || ""} alt=''></img>
+                        <img src={book?.images[image] || ""} alt='bigImg'></img>
                     </div>
 
 
@@ -113,9 +118,9 @@ const Card2 = ({ book }) => {
                     </div>
 
                 </div>
-            </Box>
+            </Box >
 
-        </div>
+        </div >
     )
 }
 
