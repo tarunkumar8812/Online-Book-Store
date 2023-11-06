@@ -74,7 +74,7 @@
     align-items: flex-start;
     /* background: linear-gradient(180deg, rgba(0,69,255,1) 0%, rgba(0,255,252,0.5074404761904762) 100%); */
     width: 40%;
-    min-width: 400px;
+    min-width: 350px;
 }
 
 .item{
@@ -164,3 +164,12 @@ p{
     justify-content: space-between;
 }
 
+
+
+@media screen and (max-width: 450px) {
+    .full_details {
+      
+        border: 1px solid grey;
+        min-width:350px;
+    }
+}

@@ -15,6 +15,7 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     margin: 20px 0;
+    padding-bottom: 20px;
     /* row-gap: 20px; */
     border-bottom: 1px solid rgb(168, 168, 168);
 
@@ -41,6 +42,8 @@
     color: black;
     /* background-color: rgb(148, 152, 150); */
     margin: 0 auto;
+    width: max-content;
+
 }
 
 .links-container-items h4 {

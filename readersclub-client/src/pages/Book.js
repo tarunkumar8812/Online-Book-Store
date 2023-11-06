@@ -43,10 +43,13 @@ const Book = () => {
 
             <Card2 book={book}></Card2>
 
-            <Card1 heading={`${book?.genre?.toUpperCase()}`} field="novel" data={sameGenre}></Card1>
-            <Card1 heading={`${book?.author?.toUpperCase()}'s`} field="novel" data={sameAuthor}></Card1>
-            <Card1 heading="Top Rated Books" field="ratings" rating={true} data={topRatedBooks}></Card1>
+            {!loading && <div>
 
+                <Card1 heading={`${book?.genre?.toUpperCase()}`} field="novel" data={sameGenre}></Card1>
+                <Card1 heading={`${book?.author?.toUpperCase()}'s`} field="novel" data={sameAuthor}></Card1>
+                <Card1 heading="Top Rated Books" field="ratings" rating={true} data={topRatedBooks}></Card1>
+
+            </div>}
             <Footer></Footer>
 
         </>

@@ -1,14 +1,13 @@
 
-import React from 'react'
+import { React } from 'react'
 import './card1.css'
 import { useNavigate } from 'react-router-dom'
-import { Button, IconButton, Rating } from '@mui/material'
-import { ArrowBack, ArrowForward } from '@mui/icons-material'
+import { Button, Rating } from '@mui/material'
+// import { ArrowBack, ArrowForward } from '@mui/icons-material'
 
 
 const Card1 = ({ heading, data, rating }) => {
   const navigate = useNavigate()
-
 
   // const [seeAll, setSeeAll] = useState("")
 
@@ -28,8 +27,6 @@ const Card1 = ({ heading, data, rating }) => {
   }
 
 
-
-
   return (
     <>
 
@@ -38,8 +35,10 @@ const Card1 = ({ heading, data, rating }) => {
           <h2 className='heading'>{heading}</h2>
           <div>
             <Button onClick={() => handleSeeAll(heading)}>See All</Button>
-            <IconButton color='info'><ArrowBack></ArrowBack></IconButton>
-            <IconButton color='info'><ArrowForward></ArrowForward></IconButton>
+            {/* <IconButton color='info' onClick={() => handleSlider('r')} ><ArrowBack></ArrowBack>
+            </IconButton>
+            <IconButton color='info' onClick={() => handleSlider('l')}><ArrowForward></ArrowForward>
+            </IconButton> */}
           </div>
 
         </div>

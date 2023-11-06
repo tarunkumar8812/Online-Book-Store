@@ -91,7 +91,7 @@ const Footer = () => {
 
       <AppBar position='static' sx={{  display: "flex", alignItems: "center" }}>
 
-        <div style={{padding:"5px"}}> Copyright © 2023 . ReadersClub.com | All Rights Reserved</div>
+        <div style={{padding:"5px",fontSize:"12px"}}> Copyright © 2023 . ReadersClub.com | All Rights Reserved</div>
       </AppBar>
     </>
 
