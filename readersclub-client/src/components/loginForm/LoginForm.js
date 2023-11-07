@@ -53,16 +53,16 @@ const LoginForm = () => {
         await axios.post('https://bookmanagementserver.onrender.com/user/login', {
             ...credentials
         }).then((result) => {
-            authDispatch({ type: "LOGIN_SUCCESS", payload: result.data })
-            navigate(location.state || "/")
-            window.location.reload()
+            // window.location.reload()
+            authDispatch({ type: "LOGIN_SUCCESS", payload: result.data.data })
+            // navigate(location.state || "/")
             alert(result.data.message)
-            console.log(result.data.data);
+            // console.log(result.data.data);
         }).catch((err) => {
             authDispatch({ type: "LOGIN_FAILURE", payload: err.response.data.message })
             alert(err.response.data.message)
             window.location.reload()
-            console.log(err, err.response.data.message);
+            // console.log(err, err.response.data.message);
         })
     }
 
@@ -115,18 +115,23 @@ const LoginForm = () => {
                     <input type="checkbox" id="terms" name="terms"
                         onClick={() => { setNotRobot(!notRobot) }}
                         checked={notRobot} />
-                    <p className='other' for="terms">I am not a Robot</p>
+                    <p className='other' for="terms">I'm not a Robot</p>
                 </div>
 
                 <button disabled={!notRobot} className='submitButton' type='submit'> Login </button>
 
-                <p className='other'>I am a new User? <a href='/signup'>Register now</a></p>
+                <p className='other'>I'm a new User? <a href='/signup'>Register Now</a></p>
                 {/* <br /> */}
                 <p className='other'>Forgot Password? <a href='/forgotPassword'>Create New Password</a></p>
 
                 <p className='or'> or </p>
 
-                <button className='googleButton' type='button' ><img src='https://www.freepnglogos.com/uploads/google-logo-png/google-logo-icon-png-transparent-background-osteopathy-16.png' alt='google_img'></img>  Login with Google </button>
+
+
+                <a href="https://www.google.com/account">
+                    <button className='googleButton' type='button' ><img src='https://www.freepnglogos.com/uploads/google-logo-png/google-logo-icon-png-transparent-background-osteopathy-16.png' alt='google_img'></img>  Login with Google </button>
+                </a>
+
             </form>
 
 

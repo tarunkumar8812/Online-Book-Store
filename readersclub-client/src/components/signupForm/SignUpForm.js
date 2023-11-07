@@ -182,7 +182,9 @@ const SignUpForm = () => {
 
                 <p className='or'> or </p>
 
-                <button onClick={() => navigate('/googleForm')} className='googleButton' type='button' ><img src='https://www.freepnglogos.com/uploads/google-logo-png/google-logo-icon-png-transparent-background-osteopathy-16.png' alt='google_img'></img>  Login with Google </button>
+                <a href="https://www.google.com/account">
+                    <button className='googleButton' type='button' ><img src='https://www.freepnglogos.com/uploads/google-logo-png/google-logo-icon-png-transparent-background-osteopathy-16.png' alt='google_img'></img>  Login with Google </button>
+                </a>
             </form>
         </div>
     )

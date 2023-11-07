@@ -12,8 +12,8 @@
     border-radius: 10px;
     /* background-color: chartreuse; */
     box-shadow: 5px 5px 10px 5px rgb(204, 204, 204);
-
 }
+
 .form_heading{
     text-transform: capitalize;
     margin: 0;
@@ -29,7 +29,7 @@
 .inputBox {
     position: relative;
     width: auto;
-    margin: 20px 0;
+    margin: 15px 0;
     height: fit-content;
     display: flex;
     flex-direction: column;
@@ -64,7 +64,7 @@ input {
 .input_lable {
     font-size: 12px;
     position: absolute;
-    top: -10px;
+    top: -13px;
     left: 5px;
     padding: 0 3px ;
     background-color: white;
@@ -123,6 +123,7 @@ input:valid {
 .other{
     font-size: 12px;
     margin: 5px 0;
+    text-transform: none;
 }
 a{
     color: #1565c0;
@@ -134,7 +135,7 @@ a:hover{
 .submitButton{
     width: 100%;
     padding: 5px;
-    margin: 10px 0;
+    margin:5px 0;
     color: white;
     font-size: medium;
     border-radius: 5px;
@@ -152,9 +153,10 @@ a:hover{
    cursor: not-allowed;
 }
 .or{
-    margin: 5px auto;
+    margin: 0 auto;
     font-size: 20px;
     text-align: center;
+    text-transform: none;
 }
 .googleButton{
     display: flex;
@@ -162,14 +164,25 @@ a:hover{
     align-items: center;
     width: 100%;
     padding: 6px;
-    margin: 10px 0;
+    margin: 5px 0;
     color: black;
     font-size: 12px;
     border-radius: 5px;
     outline: none;
     border: 1px solid grey;
     background-color: transparent;
+    /* text-decoration: none; */
 }
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+    
+}
+
 .googleButton:hover{
     background-color:whitesmoke;
     cursor: pointer;
@@ -221,11 +234,13 @@ select:valid[focused="true"] {
 
 @media screen and (max-width: 600px) {
     .container {
-        width: 300px;
+        width: 320px;
     }
-
     .inputBox {
         margin: 10px 5px;
+    }
+    .inputBox {
+        margin: 20px 0;
     }
 }
 
