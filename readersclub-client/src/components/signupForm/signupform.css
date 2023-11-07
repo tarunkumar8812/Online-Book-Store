@@ -1,0 +1,270 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    margin-top: 40px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    flex-wrap: wrap;
+    width: 400px;
+    border: 1px solid rgb(138, 138, 138);
+    border-radius: 10px;
+    /* background-color: chartreuse; */
+    box-shadow: 5px 5px 10px 5px rgb(204, 204, 204);
+
+}
+.form_heading{
+    text-transform: capitalize;
+    margin: 0;
+}
+
+.formControl{
+    margin:  5px auto;
+    /* padding: 0 20px; */
+    width: 90%;
+    /* background-color: rgb(175, 175, 175); */
+}
+
+.inputBox {
+    position: relative;
+    width: auto;
+    margin: 20px 0;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* background-color: #6aac61; */
+}
+input {
+    height: 30px;
+    width: auto;
+    background-color: white;
+    /* border-radius: 5px ; */
+    padding-left: 5px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 5px;
+    outline: none;
+   
+}
+.inputBox img{
+    position: absolute;
+    top: 7px;
+    right: 5px;
+    width: 20px;
+ }
+
+.hashtric {
+    display: inline;
+    color: red;
+    font-size: medium;
+}
+
+.input_lable {
+    font-size: 12px;
+    position: absolute;
+    top: -10px;
+    left: 5px;
+    padding: 0 3px ;
+    background-color: white;
+    border-radius: 5px;
+    
+}
+
+
+
+.checkbox{
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 5px;
+}
+
+.checkbox input{
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+
+.errorMessage {
+    color: transparent;
+    font-size: 12px;
+    display: none;
+}
+
+input:focus {
+    /* border-bottom: 1px solid red; */
+    /* background-color: rgb(238, 238, 238); */
+    box-shadow: 0px 5px 5px 2px rgb(204, 204, 204);
+
+}
+input:focus~.input_lable {
+    color: 2196f3;
+
+}
+
+input:invalid[focused="true"] {
+    border: 1px solid grey;
+}
+
+input:invalid[focused="true"]~.errorMessage {
+align-self: flex-start;
+    display: block;
+    color: red;
+}
+
+input:valid {
+    border: 1px solid rgb(4, 107, 9);
+    background-color: transparent;
+}
+
+.other{
+    font-size: 12px;
+    margin: 5px 0;
+}
+a{
+    color: #1565c0;
+}
+a:hover{
+    color: #1565c0;
+    cursor: pointer;
+}
+.submitButton{
+    width: 100%;
+    padding: 5px;
+    margin: 10px 0;
+    color: white;
+    font-size: medium;
+    border-radius: 5px;
+    outline: none;
+    border: 2px solid #2196f3;
+    background-color:#2196f3;
+}
+.submitButton:hover{
+    border: 2px solid #1976d2;
+    background-color:#1976d2;
+    cursor: pointer;
+}
+.submitButton:disabled{
+
+   cursor: not-allowed;
+}
+.or{
+    margin: 5px auto;
+    font-size: 20px;
+    text-align: center;
+}
+.googleButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 6px;
+    margin: 10px 0;
+    color: black;
+    font-size: 12px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid grey;
+    background-color: transparent;
+}
+.googleButton:hover{
+    background-color:whitesmoke;
+    cursor: pointer;
+}
+
+.googleButton img{
+width: 20px;
+}
+/* .gender {
+    width: 100%;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.gender input {
+    margin-right: 20px;
+} */
+
+/* .widthFull {
+    width: 100%;
+}
+
+.width30 {
+    width: 30%;
+}
+
+.width50 {
+    width: 45%;
+} */
+
+
+/* select {
+    background-color: transparent;
+    height: 35px;
+    border: 1px solid gray;
+    outline: none;
+}
+
+select:inValid[focused="true"] {
+    border: 1px solid red;
+}
+select:valid[focused="true"] {
+    border: 1px solid green;
+} */
+
+
+
+@media screen and (max-width: 600px) {
+    .container {
+        width: 300px;
+    }
+
+    .inputBox {
+        margin: 10px 5px;
+    }
+}
+
+
+/* for OTP */
+
+.dialogBox{
+    position: absolute;
+    margin: auto;
+    margin-top: calc(10%);
+    padding: 30px;
+    background-color: white;
+    width: 500px;
+    border: 1px solid rgb(138, 138, 138);
+    border-radius: 10px;
+    /* background-color: chartreuse; */
+    box-shadow: 10px 10px 1000px 100px rgb(204, 204, 204);
+
+}
+
+.actionButton{
+display: flex;
+padding: 0 30px;
+justify-content: space-between;
+
+}
+
+.otpBtn{
+    padding: 5px;
+    color: white;
+    font-size: medium;
+    border-radius: 5px;
+    outline: none;
+    border: 2px solid #2196f3;
+    background-color:#2196f3;
+    cursor: pointer;
+}
+
+.otpBtn:hover{
+    border: 2px solid #1976d2;
+    background-color:#1976d2;
+}

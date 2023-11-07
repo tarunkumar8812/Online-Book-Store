@@ -46,9 +46,9 @@ const Card1 = ({ heading, data, rating }) => {
 
 
           {/* // a single Card start */}
-          {data.map((book) => {
+          {data.map((book, ind) => {
             return (
-              <div className='book_box' onClick={() => handleClick(book.title, book._id)}>
+              <div key={ind} className='book_box' onClick={() => handleClick(book.title, book._id)}>
                 <div className='book_img'>
                   <img src={book?.images} alt='Thumbnail'></img>
                 </div>

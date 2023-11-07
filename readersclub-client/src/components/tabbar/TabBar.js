@@ -29,7 +29,7 @@ const TabBar = () => {
     //     setValue(newValue);
     // };
     const handleClick = (newValue, field, value, lable) => {
-        console.log(newValue, field, value, lable);
+        // console.log(newValue, field, value, lable);
 
         setValue(newValue);
         navigate('/list', { state: { field, value, lable } })
@@ -49,9 +49,9 @@ const TabBar = () => {
             >
 
                 {tabOption.map((item, ind) => {
-                    return (<>
-                        <Tab onClick={() => { handleClick(ind, item?.field, item?.value, item?.lable) }} label={item?.lable} />
-                    </>)
+                    return (
+                        <Tab key={ind} onClick={() => { handleClick(ind, item?.field, item?.value, item?.lable) }} label={item?.lable} />
+                    )
                 })}
                 {/* <Tab label="Fiction" />
                 <Tab label="Biograpy" />

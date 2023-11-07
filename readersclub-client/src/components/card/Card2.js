@@ -28,6 +28,7 @@ const Card2 = ({ book }) => {
     }
 
 
+    
     return (
         <div style={{ margin: "15px" }}>
             <Box component='div' sx={{ border: "1px solid grey", margin: "auto", padding: "15px", height: "auto", maxWidth: '1600px' }}>
@@ -118,9 +119,9 @@ const Card2 = ({ book }) => {
                     </div>
 
                 </div>
-            </Box >
+            </Box>
 
-        </div >
+        </div>
     )
 }
 

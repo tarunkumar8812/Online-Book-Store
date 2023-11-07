@@ -1,13 +1,38 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import './navbar.css'
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 import { AppBar, Avatar, Box, Button, IconButton, InputBase, Menu, MenuItem, Toolbar, Typography } from '@mui/material'
+import { AuthContext } from '../../context/AuthContext';
 // import { Person, PersonAddAlt1, ShoppingCart } from '@mui/icons-material';
 const Navbar = () => {
 
+  const { user } = useContext(AuthContext)
+
   const [open, setOpen] = useState(false)
+  const [openDialog, setOpenDialog] = useState(false)
+  const { authDispatch } = useContext(AuthContext)
+
+
+  const handleDialogOpen = () => {
+    setOpenDialog(true);
+  };
+
+  const handleDialogClose = () => {
+    setOpenDialog(false);
+  };
+
+  const handleLogout = () => {
+    authDispatch({ type: "LOGOUT" })
+    setOpenDialog(false);
+    window.location.reload()
+  };
 
   const handleClick = () => {
     setOpen(true)
@@ -53,17 +78,29 @@ const Navbar = () => {
 
             <Box sx={{ display: { xs: 'none', md: "block" } }}>
 
-              <NavLink to='/login'>
+              {!user && <NavLink to='/login'>
                 <Button color='inherit'>
                   <Typography sx={{ color: "white" }}>Login</Typography>
                 </Button>
-              </NavLink>
+              </NavLink>}
 
-              <NavLink to='/signup'>
+              {!user && <NavLink to='/signup'>
                 <Button color='inherit'>
                   <Typography sx={{ color: "white" }}>Sign Up</Typography>
                 </Button>
-              </NavLink>
+              </NavLink>}
+
+              {user && <NavLink to='/profile'>
+                <Button color='inherit'>
+                  <Typography sx={{ color: "white" }}>Profile</Typography>
+                </Button>
+              </NavLink>}
+
+              {user &&
+                <Button color='inherit' onClick={handleDialogOpen}>
+                  <Typography sx={{ color: "white" }}>Logout</Typography>
+                </Button>
+              }
 
               <NavLink to='/about'>
                 <Button color='inherit'>
@@ -100,15 +137,15 @@ const Navbar = () => {
                   'aria-labelledby': 'basic-button',
                 }}
               >
-                <NavLink to='/login' style={{ textDecoration: 'none' }}>  <MenuItem sx={{color:'black',fontSize:"12px"}} onClick={handleClose}>LOGIN
-                </MenuItem>
-                </NavLink>
-                <NavLink to='/signup' style={{ textDecoration: 'none' }}>  <MenuItem sx={{color:'black',fontSize:"12px"}} onClick={handleClose}>SIGNUP
-                </MenuItem>
-                </NavLink>
-                <NavLink to='/about' style={{ textDecoration: 'none' }}>  <MenuItem sx={{color:'black',fontSize:"12px"}} onClick={handleClose}>ABOUT
-                </MenuItem>
-                </NavLink>
+                {!user && <NavLink to='/login' style={{ textDecoration: 'none' }}>  <MenuItem sx={{ color: 'black', fontSize: "12px" }} onClick={handleClose}>LOGIN</MenuItem></NavLink>}
+
+                {!user && <NavLink to='/signup' style={{ textDecoration: 'none' }}>  <MenuItem sx={{ color: 'black', fontSize: "12px" }} onClick={handleClose}>SIGNUP</MenuItem></NavLink>}
+
+                {user && <NavLink to='/profile' style={{ textDecoration: 'none' }}>  <MenuItem sx={{ color: 'black', fontSize: "12px" }} onClick={handleClose}>PROFILE</MenuItem></NavLink>}
+
+                {user && <MenuItem sx={{ color: 'black', fontSize: "12px" }} onClick={handleDialogOpen}>LOGOUT</MenuItem>}
+
+                <NavLink to='/about' style={{ textDecoration: 'none' }}>  <MenuItem sx={{ color: 'black', fontSize: "12px" }} onClick={handleClose}>ABOUT</MenuItem></NavLink>
               </Menu>
 
               {/* <IconButton ><Person sx={{ color: "white" }} /></IconButton>
@@ -122,6 +159,29 @@ const Navbar = () => {
 
           </Toolbar>
         </AppBar>
+
+
+
+        {/* ------------dialog box for logout------------ */}
+        <Dialog
+          open={openDialog}
+          onClose={handleDialogClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            {"Sign Out of App?"}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText sx={{ textTransform: "none" }} id="alert-dialog-description" >
+              Are you sure you would like to sign out?
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleDialogClose}>Cancel</Button>
+            <Button variant='outlined' onClick={handleLogout} > Sign Out </Button>
+          </DialogActions>
+        </Dialog>
       </Box>
 
 

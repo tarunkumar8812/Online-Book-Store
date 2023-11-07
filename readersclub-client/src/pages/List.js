@@ -14,6 +14,7 @@ const List = () => {
 
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
+
     useEffect(() => {
         const fetchData = async () => {
             // api calling using axios
