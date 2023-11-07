@@ -68,12 +68,12 @@ const SignUpForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        await axios.post('http://localhost:4000/user/createUser', {
+        await axios.post('https://bookmanagementserver.onrender.com/user/createUser', {
             ...values
         }).then((result) => {
             window.location.reload()
-            navigate('/login')
             alert(result.data.message)
+            navigate('/login')
             // console.log(result.data.message);
         }).catch((err) => {
             window.location.reload()
