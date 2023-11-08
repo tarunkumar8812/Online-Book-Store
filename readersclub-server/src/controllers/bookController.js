@@ -9,36 +9,11 @@ const createUser = async function (req, res) {
         // const { title, name, phone, email, password, address, ...rest } = req.body
         const { fullname, phone, email, password } = req.body
 
-        console.log(fullname, phone, email, password);
         console.log(body);
 
         if (Object.keys(body).length == 0) return res.status(400).send({ status: false, message: "Please fill data in body" })
 
-        // if (Object.keys(rest).length > 0) return res.status(400).send({ status: false, message: `You can not fill these:-( ${Object.keys(rest)} ) data ` })
-
-        // if (validTitle(title) != true) return res.status(400).send({ status: false, message: `${validTitle(title)}` })
-
-        // if (validName(name) != true) return res.status(400).send({ status: false, message: `${validName(name)}` })
-
-        // if (validPhone(phone) != true) return res.status(400).send({ status: false, message: `${validPhone(phone)}` })
-
-        // if (validEmail(email) != true) return res.status(400).send({ status: false, message: `${validEmail(email)}` })
-
-        // if (validPassword(password) != true) return res.status(400).send({ status: false, message: `${validPassword(password)}` })
-
-
-        // if (validAddress(address) != true) return res.status(400).send({ status: false, message: `${validAddress(address)}` })
-
-        // const { street, city, pincode } = address
-
-        // if (validStreet(street) != true) return res.status(400).send({ status: false, message: `${validStreet(street)}` })
-
-        // if (validCity(city) != true) return res.status(400).send({ status: false, message: `${validCity(city)}` })
-
-        // if (validPincode(pincode) != true) return res.status(400).send({ status: false, message: `${validPincode(pincode)}` })
-
-
-
+        
         //  ------- checking uniqueness of phone no. -------
         let phone_in_DB = await userModel.findOne({ phone: phone })
         if (phone_in_DB) return res.status(409).send({ status: false, message: "Phone Number is already registered" })

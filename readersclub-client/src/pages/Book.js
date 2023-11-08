@@ -9,8 +9,6 @@ import Card2 from '../components/card/Card2'
 const Book = () => {
 
     const location = useLocation()
-    // console.log(location);
-
 
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
@@ -19,9 +17,7 @@ const Book = () => {
         const fetchData = async () => {
             // api calling using axios
             const res = await axios.get(`https://bookmanagementserver.onrender.com/user/getAllBooks`)
-            // const res = await axios.get(`https://readers-club-server.vercel.app/user/getAllBooks`)
             // const res = await axios.get(`http://localhost:5000/user/getAllBooks`)
-            // const res = await res.json
             setLoading(false)
             setData(res.data.bookList)
         }
@@ -49,7 +45,6 @@ const Book = () => {
 
             </div>}
             <Footer></Footer>
-
         </>
     )
 }

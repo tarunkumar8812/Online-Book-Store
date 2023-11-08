@@ -1,18 +1,18 @@
-import { Box } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import { Box } from '@mui/material'
 import Card1 from '../card/Card1'
+import axios from 'axios'
 import './content.css'
+import Carousel from '../carousel/Carousel'
 const Content = () => {
 
-  // const category = ['history', 'novel', 'biography']
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
+
   useEffect(() => {
     const fetchData = async () => {
       // api calling using axios
       const res = await axios.get(`https://bookmanagementserver.onrender.com/user/getAllBooks`)
-      // const res = await axios.get(`https://readers-club-server.vercel.app/user/getAllBooks`)
       // const res = await axios.get(`http://localhost:5000/user/getAllBooks`)
       // console.log(res.data.bookList);
 
@@ -45,6 +45,7 @@ const Content = () => {
         // m: '10px'
 
       }}>
+        <Carousel></Carousel>
         <Card1 heading="top rated" field="ratings" data={topRatedBooks}></Card1>
         <Card1 heading="novel" field="novel" data={novel}></Card1>
         <Card1 heading="top selling" field="Selling" data={topSellingBooks}></Card1>

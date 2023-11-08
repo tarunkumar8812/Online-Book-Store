@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { Box, Button, Rating } from '@mui/material'
+import { AuthContext } from '../../context/AuthContext'
 import './card2.css'
 
 const Card2 = ({ book }) => {
 
     const location = useLocation()
     const navigate = useNavigate()
+    const { user } = useContext(AuthContext)
 
 
     const [image, setImage] = useState(0)
@@ -20,21 +22,20 @@ const Card2 = ({ book }) => {
     }
 
     const handleBuyNow = (book) => {
-        if (5 === '5') {
+        if (user) {
             navigate("/payment")
         } else {
-            navigate("/login", { state: "/payment" })
+            navigate("/login", { state: { book, redirect: "/payment" } })
         }
     }
 
 
-    
+
     return (
         <div style={{ margin: "15px" }}>
             <Box component='div' sx={{ border: "1px solid grey", margin: "auto", padding: "15px", height: "auto", maxWidth: '1600px' }}>
 
                 <div className='wrapper'>
-
 
                     <div className='img_container' >
                         <div className='allImages'>

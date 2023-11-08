@@ -68,12 +68,13 @@ const SignUpForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        // await axios.post('http://localhost:5000/user/createUser', {
         await axios.post('https://bookmanagementserver.onrender.com/user/createUser', {
             ...values
         }).then((result) => {
-            window.location.reload()
+            // window.location.reload()
             alert(result.data.message)
-            navigate('/login')
+            navigate('/')
             // console.log(result.data.message);
         }).catch((err) => {
             window.location.reload()
@@ -87,7 +88,6 @@ const SignUpForm = () => {
         <div className='container'>
             <h2 className='form_heading'>SignUp Form</h2>
             <form className='formControl' onSubmit={(e) => { handleSubmit(e) }} method='post'>
-                {/* <h2>Signup Form</h2> */}
 
                 {/* input box for name */}
                 <div className='inputBox'>
@@ -106,8 +106,6 @@ const SignUpForm = () => {
 
                 {/* input box for email */}
                 <div className='inputBox'>
-
-
                     <input
                         {...fields.email}
                         onChange={onChange}

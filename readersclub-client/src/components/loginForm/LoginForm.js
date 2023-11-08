@@ -16,13 +16,12 @@ const LoginForm = () => {
 
     const [showPass, setShowPass] = useState(false)
     const [otp, setOtp] = useState(false)
-    const fields = {
 
+    const fields = {
         email: {
             type: 'email', id: 'email', name: 'email', value: credentials.email, placeholder: 'johndoe@example.com',
             required: true
         },
-
         password: {
             type: showPass ? 'text' : 'password', id: 'password', name: 'password', value: credentials.password, placeholder: 'xxxxxxxx',
             required: true
@@ -37,7 +36,7 @@ const LoginForm = () => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value })
     }
 
-    const handleFocus = (e) => {
+    const handleFocus = () => {
         setFocused(true)
     }
     // ----------------- handle user login -----------------
@@ -49,14 +48,13 @@ const LoginForm = () => {
         e.preventDefault()
         authDispatch({ type: "LOGIN_START" })
 
-        // "https://bookmanagementserver.onrender.com/user/login"
         await axios.post('https://bookmanagementserver.onrender.com/user/login', {
             ...credentials
         }).then((result) => {
             // window.location.reload()
-            authDispatch({ type: "LOGIN_SUCCESS", payload: result.data.data })
-            // navigate(location.state || "/")
-            alert(result.data.message)
+            authDispatch({ type: "LOGIN_SUCCESS", payload: result?.data?.token })
+            navigate(location?.state?.redirect || "/")
+            alert(result?.data?.message)
             // console.log(result.data.data);
         }).catch((err) => {
             authDispatch({ type: "LOGIN_FAILURE", payload: err.response.data.message })
@@ -77,7 +75,6 @@ const LoginForm = () => {
 
                 {/* input box for email */}
                 <div className='inputBox'>
-
                     <input
                         {...fields.email}
                         onChange={onChange}
@@ -94,7 +91,6 @@ const LoginForm = () => {
 
                 {/* input box for password */}
                 <div className='inputBox'>
-                    {/* <div> */}
                     <input
                         {...fields.password}
                         onChange={onChange}
@@ -105,7 +101,6 @@ const LoginForm = () => {
                     <img onClick={() => setShowPass(!showPass)} src={showPass ? show : hide} alt='eye_img' ></img>
                     <label className='input_lable' htmlFor='password'>Password<p className='hashtric'> *</p></label>
                     <p className='errorMessage'> password is required!</p>
-                    {/* </div> */}
                 </div>
 
 

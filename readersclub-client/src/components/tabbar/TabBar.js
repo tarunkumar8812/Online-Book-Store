@@ -29,7 +29,6 @@ const TabBar = () => {
     //     setValue(newValue);
     // };
     const handleClick = (newValue, field, value, lable) => {
-        // console.log(newValue, field, value, lable);
 
         setValue(newValue);
         navigate('/list', { state: { field, value, lable } })

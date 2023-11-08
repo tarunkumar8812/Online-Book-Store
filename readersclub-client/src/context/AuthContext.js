@@ -2,15 +2,11 @@ import { createContext, useEffect, useReducer } from "react";
 
 const INITIAL_STATE = {
     user: JSON.parse(localStorage.getItem("user")) || null,
-    // user: null,
     loading: false,
     error: null,
 };
 
-// console.log('INITIAL_STATE', INITIAL_STATE);
-
 export const AuthContext = createContext(INITIAL_STATE);
-
 
 const AuthReducer = (state, action) => {
     switch (action.type) {
