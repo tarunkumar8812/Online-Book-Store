@@ -3,7 +3,61 @@ background-color: aqua;
 padding: 10px;
 min-height: 60px;
 } */
+.search {
+    width: 50%;
+    /* background-color: gold; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+.s_suggestion {
+    position: absolute;
+    display: flex;
+    justify-content: flex-start;
+    margin: 0;
+    flex-direction: column;
+    top: 40px;
+    background-color:white;
+    width: 100%;
+    border-radius: 5px;
+    z-index: 1;
+}
+.s_suggestion_box{
+    display: flex;
+    padding: 0;
+    padding-top: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.box_ul_li {
+    margin-left: 0;
+    width: 95%;
+    padding: 4px;
+    margin-bottom: 2px;
+    display: flex;
+    border-radius: 5px;
+    justify-content: space-between;
+    color:black;
+    background-color: rgba(0, 0, 0, 0.05);
 
+}
+.box_ul_li:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.book_title{
+    font-size: 14px;
+}
+.Book_author{
+    font-size: 14px;
+}
+.navlink_box {
+    display: flex;
+    /* gap: 30px; */
+
+
+
+}
 
 .logo_img{
     width: 40px;
@@ -23,6 +77,9 @@ min-height: 60px;
        display: block;
     }
     .logo h2{
+        display: none;
+    }
+    .Book_author{
         display: none;
     }
 }

@@ -41,7 +41,9 @@ const Card2 = ({ book }) => {
                         <div className='allImages'>
                             {book?.images.map((img, ind) => {
                                 return (<>
-                                    <div className={ind === image ? "select" : 'img_box'}
+                                    <div
+                                        key={ind}
+                                        className={ind === image ? "select" : 'img_box'}
                                         onClick={() => { setImage(ind || 0) }}>
                                         <img src={img || ""} alt='smallImg'></img>
                                     </div>

@@ -1,129 +1,70 @@
-// import React, { useState } from 'react'
-// import { useTheme } from '@mui/material/styles';
-import { Box } from "@mui/material";
-// import MobileStepper from '@mui/material/MobileStepper';
-// import Paper from '@mui/material/Paper';
-// import Typography from '@mui/material/Typography';
-// import Button from '@mui/material/Button';
-// import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
-// import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-// import SwipeableViews from 'react-swipeable-views';
-// import { autoPlay } from 'react-swipeable-views-utils';
+import { useState } from 'react'
+import './carousel.css'
+const Carousel = ({ index }) => {
 
+    const arr = [
+        { name: "first", desc: "first img desc", imgSrc: "https://readerclub.in/webassets/imgs/slider/health-hd.png" },
+        { name: "second", desc: "second img desc", imgSrc: "https://readerclub.in/webassets/imgs/slider/sceince-hd.png" },
+        { name: "third", desc: "third img desc", imgSrc: "https://www.w3.org/TR/2019/NOTE-wai-aria-practices-1.1-20190207/examples/carousel/carousel-1/images/lands-endslide__800x600.jpg" },
+        { name: "fourth", desc: "fourth img desc", imgSrc: "https://wowslider.com/sliders/demo-93/data1/images/landscape.jpg" },
+        { name: "fifth", desc: "fifth img desc", imgSrc: "https://wowslider.com/sliders/demo-93/data1/images/sunset.jpg" }
+    ]
 
-// const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
+    let [display, setDisplay] = useState(index || 0)
 
+    const handleArrowClick = (direction) => {
+        if (direction === "r") {
+            if (display < arr.length - 1) {
+                setDisplay(display += 1)
+            } else { setDisplay(0) }
 
-// const images = [
-//     {
-//         label: 'San Francisco – Oakland Bay Bridge, United States',
-//         imgPath:
-//             'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
-//     },
-//     {
-//         label: 'Bird',
-//         imgPath:
-//             'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60',
-//     },
-//     {
-//         label: 'Bali, Indonesia',
-//         imgPath:
-//             'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250',
-//     },
-//     {
-//         label: 'Goč, Serbia',
-//         imgPath:
-//             'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60',
-//     },
-// ];
-const Carousel = () => {
-    // const theme = useTheme();
-    // const [activeStep, setActiveStep] = useState(0);
-    // const maxSteps = images.length;
+        } else if (direction === "l") {
+            if (display >= 1) {
+                setDisplay(display -= 1)
+            } else {
+                setDisplay(arr.length - 1)
+            }
+        }
+    }
 
-    // const handleNext = () => {
-    //     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    // };
-
-    // const handleBack = () => {
-    //     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    // };
-
-    // const handleStepChange = (step) => {
-    //     setActiveStep(step);
-    // };
     return (
         <>
-            <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
-                Carousel
-                {/* <Paper
-                    square
-                    elevation={0}
-                    sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        height: 50,
-                        pl: 2,
-                        bgcolor: 'background.default',
-                    }}
-                >
-                    <Typography>{images[activeStep].label}</Typography>
-                </Paper>
-                <AutoPlaySwipeableViews
-                    axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-                    index={activeStep}
-                    onChangeIndex={handleStepChange}
-                    enableMouseEvents
-                >
-                    {images.map((step, index) => (
-                        <div key={step.label}>
-                            {Math.abs(activeStep - index) <= 2 ? (
-                                <Box
-                                    component="img"
-                                    sx={{
-                                        height: 255,
-                                        display: 'block',
-                                        maxWidth: 400,
-                                        overflow: 'hidden',
-                                        width: '100%',
-                                    }}
-                                    src={step.imgPath}
-                                    alt={step.label}
-                                />
-                            ) : null}
+            <div className='carousel'>
+
+                {/* ------------ images ----------- */}
+
+                <div className='main-slide'>
+                    <div className='imgBox'>
+                        <img src={arr[display]?.imgSrc} alt='iSrc' />
+                        {/* <lable className="lab">Legend 1</lable> */}
+                    </div>
+
+
+                    {/* ------------ arrows ----------- */}
+                    <div className='arrows'>
+                        <div className='l-arrow arrow' onClick={() => { handleArrowClick("l") }}>
+                            <img src='https://cdn-icons-png.flaticon.com/512/271/271220.png' alt='abcg'></img>
                         </div>
-                    ))}
-                </AutoPlaySwipeableViews>
-                <MobileStepper
-                    steps={maxSteps}
-                    position="static"
-                    activeStep={activeStep}
-                    nextButton={
-                        <Button
-                            size="small"
-                            onClick={handleNext}
-                            disabled={activeStep === maxSteps - 1}
-                        >
-                            Next
-                            {theme.direction === 'rtl' ? (
-                                <KeyboardArrowLeft />
-                            ) : (
-                                <KeyboardArrowRight />
-                            )}
-                        </Button>
-                    }
-                    backButton={
-                        <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-                            {theme.direction === 'rtl' ? (
-                                <KeyboardArrowRight />
-                            ) : (
-                                <KeyboardArrowLeft />
-                            )}
-                            Back
-                        </Button>
-                    }
-                /> */}
-            </Box>
+                        <div className='r-arrow arrow' onClick={() => { handleArrowClick("r") }}>
+                            <img src='https://cdn-icons-png.flaticon.com/512/32/32213.png' alt='abcg'></img>
+                        </div>
+                    </div>
+
+                    {/* ------------ bottom dots ----------- */}
+                    <div className='dots'>
+                        {
+                            arr.map((item, index) => {
+                                return (
+                                    <div
+                                        className={index === display ? "active-dot" : "dot"}
+                                        key={index}
+                                    ></div>
+                                )
+                            })
+                        }
+                    </div>
+                </div>
+            </div>
         </>
     )
 }

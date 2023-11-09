@@ -25,6 +25,7 @@ const Card3 = ({ book, ind }) => {
 
 
             <div className='card3_book_details'>
+                <p className="card3_book_title"> {ind+1 || "loading"}</p>
                 <p className="card3_book_title"> {book?.title || "loading"}</p>
                 <p className="card3_book_author">by: {book?.author || 'loading'} </p>
 

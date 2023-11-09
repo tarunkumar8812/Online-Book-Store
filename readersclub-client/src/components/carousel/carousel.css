@@ -1,0 +1,88 @@
+
+.carousel{
+    margin: auto;
+    /* background-color: red; */
+    width: 95vw;
+    max-width: 1600px;
+    position: relative;
+    border: 1px solid rgb(207, 207, 207);
+    margin-top: 5px;
+}
+
+.imgBox{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 250px;
+   
+}
+
+.imgBox img {
+    width: 100%;
+    height: max-content;
+    scale: 1.5;
+}
+
+.arrow{
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    padding: 10px 5px;
+}
+.arrow:hover{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.l-arrow{
+    position: absolute;
+    left: 15px;
+    top: calc(50% - 25px);
+}
+
+.r-arrow{
+    position: absolute;
+    right: 15px;
+    top: 125px;
+    top: calc(50% - 25px);
+}
+
+.arrow img{
+    width: 30px;
+    height: 30px;
+}
+
+
+.dots{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    transition: 1s ease-in-out;
+    position: absolute;
+    bottom: 20px;
+    left: calc(50% - 50px);
+
+}
+.dot{
+    padding: 5px;
+    border-radius: 50% ;
+    background-color: rgba(245, 222, 179, 0.555);
+}
+.active-dot{
+    padding: 5px;
+    border-radius: 50% ;
+    background-color:white;
+}
+
+@media screen and (max-width: 600px) {
+    .imgBox{
+        height: 180px;
+    }
+ 
+    .dots{
+        gap: 8px;
+        bottom: 15px;
+        left: calc(50% - 40px);
+    }
+}

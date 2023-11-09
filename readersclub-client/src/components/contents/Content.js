@@ -45,12 +45,16 @@ const Content = () => {
         // m: '10px'
 
       }}>
-        <Carousel></Carousel>
+        <Carousel index={0}></Carousel>
         <Card1 heading="top rated" field="ratings" data={topRatedBooks}></Card1>
         <Card1 heading="novel" field="novel" data={novel}></Card1>
+        <Carousel index={4}></Carousel>
+
         <Card1 heading="top selling" field="Selling" data={topSellingBooks}></Card1>
         <Card1 heading="biography" field="Biography" data={biography}></Card1>
         <Card1 heading="business" field="novel" data={novel}></Card1>
+        <Carousel index={3}></Carousel>
+
         <Card1 heading="life" field="novel" data={novel}></Card1>
 
       </Box>}

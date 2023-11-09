@@ -129,7 +129,6 @@ const LoginForm = () => {
 
             </form>
 
-
             {otp && <div className='dialogBox'>
                 <div className='inputBox'>
                     <input
