@@ -14,14 +14,16 @@ import { AppBar, Avatar, Badge, Box, Button, IconButton, Menu, MenuItem, Toolbar
 import { AuthContext } from '../../context/AuthContext';
 import { Person, ShoppingCart, Login, PowerSettingsNew } from '@mui/icons-material';
 const Navbar = () => {
+  const navigate = useNavigate()
 
   const { user } = useContext(AuthContext)
   const [search, setSearch] = useState("")
   const [open, setOpen] = useState(false)
+  const [suggestion, setSuggestion] = useState(false)
+  const [cartItems, setCartItems] = useState(1)
   const [openDialog, setOpenDialog] = useState(false)
   const { authDispatch } = useContext(AuthContext)
   const [fetchData, setFetchData] = useState([])
-  const navigate = useNavigate()
 
 
   const handleDialogOpen = () => {
@@ -35,7 +37,7 @@ const Navbar = () => {
   const handleLogout = () => {
     authDispatch({ type: "LOGOUT" })
     setOpenDialog(false);
-    window.location.reload()
+    navigate('/')
   };
 
   const handleClick = () => {
@@ -46,6 +48,7 @@ const Navbar = () => {
   }
 
   const handleSearch = (e) => {
+    setSuggestion(true)
     setSearch(e.target.value.toLowerCase())
     // const key_words = e.target.value.split(" ").filter(word => word.trim() !== "")//.filter(whiteSpace=> word !== "")
   }
@@ -92,7 +95,9 @@ const Navbar = () => {
                   type='text'
                   style={{ border: "none", bgcolor: 'white', borderRadius: "5px 0  0 5px", paddingLeft: '5px', width: "100%", outline: "none" }}
                   placeholder='Search here...'
-                  onChange={handleSearch} defaultValue={search}
+                  onChange={handleSearch}
+                  onBlur={() => { setSuggestion(false) }}
+                  defaultValue={search}
                 />
                 <IconButton variant='contained' size='small'
                   sx={{ bgcolor: "orange", borderRadius: '0 5px 5px 0 ' }}>
@@ -113,7 +118,7 @@ const Navbar = () => {
                           return <>
                             <li className='box_ul_li' onClick={() => { searchBook(book.title, book._id) }} >
                               <p className='book_title'>
-                                {/* <SearchIcon sx={{fontSize:"14px"}}></SearchIcon> */}
+                                <SearchIcon sx={{ fontSize: "16px", marginRight: "5px" }}></SearchIcon>
                                 {`${book.title}`}</p>
                               <p className='Book_author'>{`by ${book.author}`}</p>
                             </li>
@@ -159,7 +164,7 @@ const Navbar = () => {
 
               {user && <NavLink to='/cart'>
                 <Button color='inherit'>
-                  <Badge badgeContent={1} color="error">
+                  <Badge badgeContent={cartItems || 0} color="error">
                     <Typography sx={{ color: "white" }}>Cart</Typography>
                   </Badge>
                 </Button>
@@ -205,8 +210,10 @@ const Navbar = () => {
                 {user && <NavLink to='/profile' style={{ textDecoration: 'none' }}>  <MenuItem sx={{ fontSize: "12px", gap: "10px" }} onClick={handleClose}><Person fontSize='small' />PROFILE</MenuItem></NavLink>}
 
                 {user && <NavLink to='/cart' style={{ textDecoration: 'none' }}>
-                  <MenuItem sx={{ fontSize: "14px", gap: "10px" }} onClick={handleDialogOpen}>
-                    <Badge badgeContent={1} color="error">
+                  <MenuItem sx={{ fontSize: "14px", gap: "10px" }}
+                  // onClick={handleDialogOpen}
+                  >
+                    <Badge badgeContent={cartItems || 0} color="error">
                       <ShoppingCart fontSize='medium' color="action" />
                     </Badge>CART</MenuItem>
                 </NavLink>}

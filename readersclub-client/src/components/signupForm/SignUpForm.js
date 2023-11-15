@@ -4,6 +4,7 @@ import hide from '../../assets/hide.png'
 import show from '../../assets/show.png'
 import './signupform.css'
 import axios from 'axios'
+import { Box } from '@mui/material'
 
 
 const SignUpForm = () => {
@@ -86,7 +87,11 @@ const SignUpForm = () => {
 
     return (
         <div className='container'>
-            <h2 className='form_heading'>SignUp Form</h2>
+            <Box sx={{  bgcolor: 'white', display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", margin: "auto" }} >
+                <p className='logo' onClick={()=>{navigate('/')}}>  Readers Club </p>
+            </Box>
+
+            <h3 className='form_heading'>SignUp Form</h3>
             <form className='formControl' onSubmit={(e) => { handleSubmit(e) }} method='post'>
 
                 {/* input box for name */}
@@ -181,7 +186,7 @@ const SignUpForm = () => {
                 <p className='or'> or </p>
 
                 <a href="https://www.google.com/account">
-                    <button className='googleButton' type='button' ><img src='https://www.freepnglogos.com/uploads/google-logo-png/google-logo-icon-png-transparent-background-osteopathy-16.png' alt='google_img'></img>  Login with Google </button>
+                    <button className='googleButton' type='button' ><img src='https://www.freepnglogos.com/uploads/google-logo-png/google-logo-icon-png-transparent-background-osteopathy-16.png' alt='google_img'></img>  Signup with Google </button>
                 </a>
             </form>
         </div>

@@ -54,11 +54,12 @@ const List = () => {
             {!loading && <Carousel index={1}></Carousel>}
 
             {loading &&
-                <Box sx={{ height: "90vh", width: "90vw", bgcolor: 'white', display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }} >
+                <Box sx={{ height: "90vh", width: "90vw", bgcolor: 'white', display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", margin: "auto" }} >
                     <h1 className='logo'>  Readers Club </h1>
                     <p> Loading...</p>
-                </Box>}
-            <div
+                </Box>
+            }
+            {!loading && <div
                 style={{ margin: "10px auto", maxWidth: "1300px", border: "1px solid gray" }}>
 
                 <p style={{ display: "flex", justifyContent: "space-around", alignItems: "center" }}>
@@ -94,6 +95,7 @@ const List = () => {
                     </Stack>
                 </Box>
             </div>
+            }
             <Card1 heading="related to Your Search" data={data}></Card1>
             <Carousel index={2}></Carousel>
             <Footer></Footer>

@@ -13,6 +13,7 @@
     /* background-color: chartreuse; */
     box-shadow: 5px 5px 10px 5px rgb(204, 204, 204);
 }
+
 .logo{
 
     font-size: 20px;
@@ -26,6 +27,8 @@
 .logo:hover{
     cursor: pointer;
 }
+
+
 .form_heading{
     text-transform: capitalize;
     margin: 0;

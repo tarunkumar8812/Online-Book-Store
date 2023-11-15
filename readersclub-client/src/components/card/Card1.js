@@ -24,7 +24,6 @@ const Card1 = ({ heading, data, rating }) => {
           <div>
             <Button onClick={() => handleSeeAll(heading)}>See All</Button>
           </div>
-
         </div>
         <div className='cards'>
 
@@ -50,10 +49,17 @@ const Card1 = ({ heading, data, rating }) => {
 
                   {/* <p className="">{book?.soldCopies || 'N/A'} </p> */}
                   {/* <p className="">Ratings - {book?.ratings || 'N/A'} </p> */}
-                  {rating && <Rating name="read-only" value={book?.ratings || 1} size='small' readOnly />
-                  }
-                </div>
 
+                </div>
+                {rating && <Rating
+                  sx={{
+                    display: 'flex',
+                    flexDirection: "row",
+                    position: "absolute",
+                    bottom:"0"
+                  }}
+                  name="read-only" value={book?.ratings || 1} size='small' readOnly />
+                }
 
                 {book?.discountPercent > 0 && <p className="book_discount">{book?.discountPercent}%</p>}
 

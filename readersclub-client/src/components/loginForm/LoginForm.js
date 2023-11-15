@@ -4,6 +4,8 @@ import hide from '../../assets/hide.png'
 import show from '../../assets/show.png'
 import axios from 'axios'
 import { AuthContext } from '../../context/AuthContext'
+import { Box } from '@mui/material'
+import './loginform.css'
 
 
 const LoginForm = () => {
@@ -67,7 +69,10 @@ const LoginForm = () => {
 
     return (
         <div className='container'>
-            <h2 className='form_heading'>Login Form</h2>
+            <Box sx={{  bgcolor: 'white', display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", margin: "auto" }} >
+                <p className='logo' onClick={()=>{navigate('/')}}>  Readers Club </p>
+            </Box>
+            <h3 className='form_heading'>Login Form</h3>
             <form className='formControl' method='post' onSubmit={(e) => { handleSubmit(e) }}>
 
 

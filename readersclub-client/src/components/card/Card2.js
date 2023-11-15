@@ -3,12 +3,13 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { Box, Button, Rating } from '@mui/material'
 import { AuthContext } from '../../context/AuthContext'
 import './card2.css'
+import axios from 'axios'
 
 const Card2 = ({ book }) => {
 
     const location = useLocation()
     const navigate = useNavigate()
-    const { user } = useContext(AuthContext)
+    const { user, authDispatch } = useContext(AuthContext)
 
 
     const [image, setImage] = useState(0)
@@ -17,9 +18,39 @@ const Card2 = ({ book }) => {
         setImage(0)
     }, [location])
 
-    const handleAddToCart = (book) => {
-        navigate("/cart", { state: book })
+
+    const handleAddToCart = async (book) => {
+
+        if (!user) {
+            navigate("/login")
+        }
+        // api calling using axios
+        await axios.post(`https://bookmanagementserver.onrender.com/user/addToCart`, {
+            // await axios.post(`http://localhost:5000/user/addToCart`, {
+            token: user,
+            bookId: book._id,
+            price: book.price,
+            weight: book.weight,
+            discount: book.discountPercent
+        }).then((result) => {
+            // console.log(result.data.message);
+            alert(result.data.message);
+
+        }).catch((err) => {
+            console.log(err.response.status, err.message);
+            console.log(err.response.data.message);
+            if (err.response.status === 401) {
+                alert(err.response.data.message)
+                authDispatch({ type: "LOGOUT" })
+                navigate('/login')
+            } else if (err.response.status === 409) {
+                alert(err.response.data.message)
+            } else {
+                navigate('/')
+            }
+        })
     }
+
 
     const handleBuyNow = (book) => {
         if (user) {
@@ -71,10 +102,20 @@ const Card2 = ({ book }) => {
                             <NavLink style={{ textDecoration: 'none' }} to='/publisher'> <p className='publisher'>{book?.publisher || 'Publishser Name'}</p></NavLink>
                         </div>
 
-                        <div className='item' style={{ paddingBottom: "30px", borderBottom: "1px solid gray" }}>
-                            <Rating sx={{ borderRight: "1px solid grey", padding: '5px' }} name="read-only" value={book?.ratings || 1} size='medium' readOnly />
+                        <div className='item' >
+
+                            <Rating
+                                sx={{
+                                    borderRight: "1px solid grey",
+                                    padding: '5px', display: 'flex',
+                                    flexDirection: "row"
+                                }}
+                                name="read-only" value={book?.ratings || 1} size='medium' readOnly />
+
                             <p style={{ borderRight: "1px solid grey", padding: '5px' }}>{book?.ratings || 1}</p>
+
                             <p>{book?.reviews} Reviews</p>
+
                         </div>
 
 
@@ -99,10 +140,10 @@ const Card2 = ({ book }) => {
 
 
                         <div className='buttons'>
-                            <Button variant='contained' className='btn buy_btn'
+                            <Button disabled={!book} variant='contained' className='btn buy_btn'
                                 onClick={() => { handleBuyNow(book) }}
                             > Buy Now</Button>
-                            <Button variant='contained' className='btn addcart_btn'
+                            <Button disabled={!book} variant='contained' className='btn addcart_btn'
                                 onClick={() => { handleAddToCart(book) }}
                             > Add to Cart</Button>
                         </div>
@@ -113,7 +154,7 @@ const Card2 = ({ book }) => {
                     <div className='other_details' >
                         <p>Country Of Origin :  {book?.countryOfOrigin}</p>
                         <p>ISBN :  {book?.ISBN}</p>
-                        <p>Published Year : {book?.publishedYear} gram</p>
+                        <p>Published Year : {book?.publishedYear}</p>
                         <p>Weight : {book?.weight} gram</p>
                         <p>Dimentions : {book?.size}</p>
                         <p>Pages :  {book?.numberOfPages || "N/A"}</p>
