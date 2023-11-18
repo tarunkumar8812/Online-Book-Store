@@ -3,11 +3,11 @@ import './carousel.css'
 const Carousel = ({ index }) => {
 
     const arr = [
-        { name: "first", desc: "first img desc", imgSrc: "https://readerclub.in/webassets/imgs/slider/health-hd.png" },
-        { name: "second", desc: "second img desc", imgSrc: "https://readerclub.in/webassets/imgs/slider/sceince-hd.png" },
-        { name: "third", desc: "third img desc", imgSrc: "https://www.w3.org/TR/2019/NOTE-wai-aria-practices-1.1-20190207/examples/carousel/carousel-1/images/lands-endslide__800x600.jpg" },
-        { name: "fourth", desc: "fourth img desc", imgSrc: "https://wowslider.com/sliders/demo-93/data1/images/landscape.jpg" },
-        { name: "fifth", desc: "fifth img desc", imgSrc: "https://wowslider.com/sliders/demo-93/data1/images/sunset.jpg" }
+        { name: "first", desc: "first img desc", imgSrc: "https://www.bookswagon.com/bannerimages/86_inr.jpg?v=2.5" },
+        { name: "second", desc: "second img desc", imgSrc: "https://www.bookswagon.com/bannerimages/88_inr.jpg" },
+        { name: "third", desc: "third img desc", imgSrc: "https://www.bookswagon.com/bannerimages/80_inr.jpg?v=2.1" },
+        { name: "fourth", desc: "fourth img desc", imgSrc: "https://www.bookswagon.com/bannerimages/79_inr.jpg?v=2.5" },
+        { name: "fifth", desc: "fifth img desc", imgSrc: "https://bc-img.s3.ap-south-1.amazonaws.com/web_banners/2023090261162.webp" }
     ]
 
     let [display, setDisplay] = useState(index || 0)
@@ -35,7 +35,7 @@ const Carousel = ({ index }) => {
 
                 <div className='main-slide'>
                     <div className='imgBox'>
-                        <img src={arr[display]?.imgSrc} alt='iSrc' />
+                        <img className='carousel-img' src={arr[display]?.imgSrc} alt='iSrc' />
                         {/* <lable className="lab">Legend 1</lable> */}
                     </div>
 

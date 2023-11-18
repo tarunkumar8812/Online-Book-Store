@@ -101,40 +101,43 @@
 
 @media screen and (max-width: 600px) {
     
-.card3_book_box{
-    position: relative;
-    border: 1px solid grey;
-    border-radius: 5px;
-    width: 160px;
-    max-width:200px ;
-    height: 350px;
-    margin: 10px 10px;
-    /* padding: 5px; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: rgb(255, 255, 255);
-    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(226, 226, 226, 1) 100%);
-}
+    .card3_book_box{
+        position: relative;
+        border: 1px solid grey;
+        border-radius: 5px;
+        width: 160px;
+        max-width:200px ;
+        height: 350px;
+        margin: 10px 10px;
+        /* padding: 5px; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: rgb(255, 255, 255);
+        background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(226, 226, 226, 1) 100%);
+    }
 
-.card3_book_title {
-    font-size: 16px;
-    background-color: #eeeded;
-}
+    .card3_book_title {
+        font-size: 14px;
+        background-color: #eeeded;
+    }
 
-.card3_book_author{
-    font-size: 14px;
-}
+    .card3_book_author{
+        font-size: 12px;
+    }
 
-.card3_book_rating{
-    margin-top: 15px ;
-    display: flex;
-    align-items: center;
-}
+    .card3_book_rating{
+        margin-top: 15px ;
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+    }
 
 
-.card3_discounted_price {
-    color: red;
-}
-
+    .card3_discounted_price {
+        color: red;
+    }
+    .action_buttons button{
+    font-size: 8px;
+    }
 }

@@ -11,17 +11,18 @@ const TabBar = () => {
     const [value, setValue] = useState(0);
     const tabOption = [
         { lable: "all Books", field: "isDeleted", value: false, string: "" },
-        // { lable: "New Arrival", field: "", value: '', string: "new arrival" },
+        { lable: "New Arrival", field: "isDeleted", value: false, string: "new arrival" },
         { lable: "Best Selling", field: "soldCopies", value: 50, string: "best selling" },
+        { lable: "Self-Help Books", field: "genre", value: 'self-help book', string: "self-help book" },
         { lable: "Fiction", field: "category", value: 'fiction', string: "fiction" },
         { lable: "Biography", field: "category", value: 'biography', string: 'biography' },
         { lable: "Humour", field: "category", value: 'humour', string: "humour" },
-        { lable: "Politics", field: "category", value: 'politics', string: "politics" },
         { lable: "Novel", field: "category", value: 'novel', string: "novel" },
         { lable: "History", field: "category", value: 'history', string: "history" },
-        { lable: "Engineering", field: "category", value: 'engineering', string: "engineering" },
-        { lable: "Scify", field: "category", value: 'scify', string: "scify" },
         { lable: "Health", field: "category", value: 'health', string: "health" },
+        { lable: "Scify", field: "category", value: 'scify', string: "scify" },
+        { lable: "Engineering", field: "category", value: 'engineering', string: "engineering" },
+        { lable: "Politics", field: "category", value: 'politics', string: "politics" },
         { lable: "School", field: "category", value: 'school', string: "school" },
     ]
 

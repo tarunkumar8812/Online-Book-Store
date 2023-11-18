@@ -15,14 +15,14 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    height: 250px;
+    height: 300px;
    
 }
 
-.imgBox img {
+.carousel-img {
     width: 100%;
-    height: max-content;
-    scale: 1.5;
+    height: 100%;
+    /* height: max-content; */
 }
 
 .arrow{
@@ -77,7 +77,7 @@
 
 @media screen and (max-width: 600px) {
     .imgBox{
-        height: 180px;
+        height: 150px;
     }
  
     .dots{

@@ -33,7 +33,7 @@ const Card1 = ({ heading, data, rating }) => {
             return (
               <div key={ind} className='book_box' onClick={() => handleClick(book.title, book._id)}>
                 <div className='book_img'>
-                  <img src={book?.images} alt='Thumbnail'></img>
+                  <img src={book?.thumbnail} alt='Thumbnail'></img>
                 </div>
 
 

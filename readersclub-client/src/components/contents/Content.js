@@ -24,6 +24,7 @@ const Content = () => {
 
   const novel = data.filter((book) => book?.genre === 'novel')
   const biography = data.filter((book) => book?.genre === 'biography')
+  const selfHelp = data.filter((book) => book?.genre === 'self-help book')
   const topRatedBooks = data.filter((book) => book?.ratings > 3).sort((a, b) => a.price - b.price)
   const topSellingBooks = data.filter((book) => book?.soldCopies > 3).sort((a, b) => a.soldCopies - b.soldCopies)
 
@@ -33,7 +34,7 @@ const Content = () => {
 
       {loading &&
         <Box sx={{ height: "90vh", bgcolor: 'white', display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }} >
-          <h1 className='logo'>  Readers Club</h1>
+          <p className='logo'>Readers Club</p>
           <p> Loading...</p>
         </Box>
       }
@@ -50,12 +51,13 @@ const Content = () => {
         <Card1 heading="novel" field="novel" data={novel}></Card1>
         <Carousel index={4}></Carousel>
 
+        <Card1 heading="self-Help books" field="genre" data={selfHelp}></Card1>
         <Card1 heading="top selling" field="Selling" data={topSellingBooks}></Card1>
         <Card1 heading="biography" field="Biography" data={biography}></Card1>
-        <Card1 heading="business" field="novel" data={novel}></Card1>
+        <Card1 heading="miscellaneous" field="novel" data={novel}></Card1>
         <Carousel index={3}></Carousel>
 
-        <Card1 heading="life" field="novel" data={novel}></Card1>
+        {/* <Card1 heading="life" field="novel" data={novel}></Card1> */}
 
       </Box>}
     </div>

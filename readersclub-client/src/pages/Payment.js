@@ -1,13 +1,14 @@
 import React from 'react'
-import Navbar from '../components/navbar/Navbar'
-import Footer from '../components/footer/Footer'
+// import Navbar from '../components/navbar/Navbar'
+// import Footer from '../components/footer/Footer'
+import NotFound from '../components/notfound/NotFound'
 
 const Payment = () => {
     return (
         <div>
-            <Navbar></Navbar>
-            <h1>Payment</h1>
-            <Footer></Footer>
+            {/* <Navbar></Navbar> */}
+            <NotFound code={503} message={'Temporarily Out of Service'} briefMessage={'The link you followed may be broken, or the page may have been out of service.'}></NotFound>
+            {/* <Footer></Footer> */}
         </div>
     )
 }

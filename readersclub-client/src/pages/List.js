@@ -16,7 +16,7 @@ const List = () => {
     const location = useLocation()
 
     const [data, setData] = useState([])
-    const [resultPerPage, setResultPerPage] = useState(4)
+    const [resultPerPage, setResultPerPage] = useState(6)
     const [page, setPage] = useState(1)
     const [loading, setLoading] = useState(true)
 
@@ -29,7 +29,6 @@ const List = () => {
 
             setLoading(false)
             setData(res.data.bookList)
-            setResultPerPage(4)
         }
         fetchData()
     }, [])
@@ -51,7 +50,7 @@ const List = () => {
         <>
             <Navbar></Navbar>
             <TabBar></TabBar>
-            {!loading && <Carousel index={1}></Carousel>}
+            {/* {!loading && <Carousel index={1}></Carousel>} */}
 
             {loading &&
                 <Box sx={{ height: "90vh", width: "90vw", bgcolor: 'white', display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", margin: "auto" }} >
@@ -79,7 +78,7 @@ const List = () => {
                                 return (<>
                                     <Card3 book={book} ind={(resultPerPage * (page - 1)) + ind}></Card3>
                                 </>)
-                            })
+                            }).sort()
                     }
                     {!loading && filtered.length === 0 &&
                         <h2>No Result Found</h2>
@@ -97,7 +96,7 @@ const List = () => {
             </div>
             }
             <Card1 heading="related to Your Search" data={data}></Card1>
-            <Carousel index={2}></Carousel>
+            <Carousel index={3}></Carousel>
             <Footer></Footer>
         </>
     )
