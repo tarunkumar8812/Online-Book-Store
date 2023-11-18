@@ -93,7 +93,7 @@ const Card2 = ({ book }) => {
 
                         <div className='item'>
                             <p className='authorSuf suf'>By: </p>
-                            <NavLink style={{ textDecoration: 'none' }} to='/auhor'><p className='author'> {book?.author} </p></NavLink>
+                            <NavLink style={{ textDecoration: 'none' }} to='/author'><p className='author'> {book?.author} </p></NavLink>
                             <p>{`(Author)`}</p>
                         </div>
 

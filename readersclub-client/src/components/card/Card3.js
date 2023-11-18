@@ -1,7 +1,9 @@
 import { Button, Rating } from '@mui/material'
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 import './card3.css'
+import axios from 'axios';
+import { AuthContext } from '../../context/AuthContext';
 
 
 
@@ -9,11 +11,47 @@ const Card3 = ({ book, ind }) => {
 
     const navigate = useNavigate()
 
+
+    const { user, authDispatch } = useContext(AuthContext)
+
     const handleClick = (title, id) => {
         navigate(`/book/${title} ${id}`, { state: { id, no: 0 } })
     }
-    const handleAddToCart = (book) => {
-        navigate("/cart", { state: book })
+    // const handleAddToCart = (book) => {
+    //     navigate("/cart", { state: book })
+    // }
+
+
+    const handleAddToCart = async (book) => {
+
+        if (!user) {
+            navigate("/login")
+        }
+        // api calling using axios
+        await axios.post(`https://bookmanagementserver.onrender.com/user/addToCart`, {
+            // await axios.post(`http://localhost:5000/user/addToCart`, {
+            token: user,
+            bookId: book._id,
+            price: book.price,
+            weight: book.weight,
+            discount: book.discountPercent
+        }).then((result) => {
+            // console.log(result.data.message);
+            alert(result.data.message);
+
+        }).catch((err) => {
+            console.log(err.response.status, err.message);
+            console.log(err.response.data.message);
+            if (err.response.status === 401) {
+                alert(err.response.data.message)
+                authDispatch({ type: "LOGOUT" })
+                navigate('/login')
+            } else if (err.response.status === 409) {
+                alert(err.response.data.message)
+            } else {
+                navigate('/')
+            }
+        })
     }
 
     return (
