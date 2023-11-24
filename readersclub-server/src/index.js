@@ -10,7 +10,7 @@ app.use(cors())
 
 
 
-mongoose.connect(process.env.MONGO_URL || "mongodb+srv://TarunKumar123:xLcX9W1SI9646ftM@cluster1.tpwtwiv.mongodb.net/Project_3", {
+mongoose.connect(process.env.MONGO_URL || "mongodb+srv://TarunKumar123:xLcX9W1SI9646ftM@cluster1.tpwtwiv.mongodb.net/NoteApp", {
     useNewUrlParser: true
 }
 )
@@ -27,7 +27,6 @@ app.use(
         next();
     }
 );
-
 
 // routes
 app.use("/", router)
