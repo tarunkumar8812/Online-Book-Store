@@ -49,7 +49,8 @@ const AddToCart = () => {
   useEffect(() => {
     const fetchData = async () => {
       // api calling using axios
-      await axios.post('https://bookmanagementserver.onrender.com/user/getCart', {
+      await axios.post('https://onlinebookstoreserver.vercel.app/user/getCart', {
+        // await axios.post('https://bookmanagementserver.onrender.com/user/getCart', {
         // await axios.post('http://localhost:5000/user/getCart', {
         token: user
       }).then((result) => {
