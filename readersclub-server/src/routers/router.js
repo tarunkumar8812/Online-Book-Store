@@ -4,7 +4,7 @@ const { createNote, getNotes, deleteNote, updateNote } = require('../controllers
 
 
 router.get('/', (req, res) => {
-    return res.status(200).send({ status: true, message: "Note App created Successfully :-)" })
+    return res.status(200).send({ status: true, message: "Online Book Store server created Successfully :-)" })
 })
 
 router.post('/user/createNote', createNote)
