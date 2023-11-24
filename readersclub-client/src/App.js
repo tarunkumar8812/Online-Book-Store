@@ -9,7 +9,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Cart from './pages/Cart';
 import Payment from './pages/Payment';
-import ResetPassword from './components/resetPassword/ResetPassword';
+import ForgotPassword from './pages/ForgotPassword';
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
         <Route path='/list' element={<List />}></Route>
         <Route path='/signup' element={<Signup />}></Route>
         <Route path='/login' element={<Login />}></Route>
-        <Route path='/forgotPassword' element={<ResetPassword />}></Route>
+        <Route path='/forgotPassword' element={<ForgotPassword />}></Route>
         <Route path='/about' element={<About />}></Route>
         <Route path='/cart' element={<Cart />}></Route>
         <Route path='/payment' element={<Payment />}></Route>
