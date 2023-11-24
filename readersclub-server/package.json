@@ -18,12 +18,14 @@
   },
   "homepage": "https://github.com/tarunkumar8812/MySQL#readme",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
     "moment": "^2.29.4",
     "mongoose": "^7.3.0",
-    "nodemon": "^2.0.21"
+    "nodemon": "^2.0.21",
+    "otp-generator": "^4.0.1"
   }
 }

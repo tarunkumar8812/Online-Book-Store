@@ -53,6 +53,7 @@ const Navbar = () => {
     // const key_words = e.target.value.split(" ").filter(word => word.trim() !== "")//.filter(whiteSpace=> word !== "")
   }
 
+
   useEffect(() => {
     const fetchData = async () => {
       // api calling using axios
@@ -65,6 +66,7 @@ const Navbar = () => {
 
   async function searchBook(title, id) {
     navigate(`/book/${title} ${id}`, { state: { id, no: 0 } })
+    setSearch('')
   }
 
 
@@ -89,47 +91,49 @@ const Navbar = () => {
 
 
             {/* Search Bar */}
-            <div className='search'>
-              <Box sx={{ display: "flex", alignItem: "center", width: "100%", border: "3px solid orange", borderRadius: "10px", bgcolor: 'white', overflow: "hidden" }}>
-                <input
-                  type='text'
-                  style={{ border: "none", bgcolor: 'white', borderRadius: "5px 0  0 5px", paddingLeft: '5px', width: "100%", outline: "none" }}
-                  placeholder='Search here...'
-                  onChange={handleSearch}
-                  onBlur={() => { setSuggestion(false) }}
-                  defaultValue={search}
-                />
-                <IconButton variant='contained' size='small'
-                  sx={{ bgcolor: "orange", borderRadius: '0 5px 5px 0 ' }}>
-                  <SearchIcon></SearchIcon>
-                </IconButton>
-              </Box>
+            <>
+              <div className='search'>
+                <Box sx={{ display: "flex", alignItem: "center", width: "100%", border: "3px solid orange", borderRadius: "10px", bgcolor: 'white', overflow: "hidden" }}>
+                  <input
+                    type='text'
+                    style={{ border: "none", bgcolor: 'white', borderRadius: "5px 0  0 5px", paddingLeft: '5px', width: "100%", outline: "none" }}
+                    placeholder='Search here...'
+                    onChange={handleSearch}
+                    // onMouseOver={() => { setSuggestion(false) }}
+                    defaultValue={search}
+                  />
+                  <IconButton variant='contained' size='small'
+                    sx={{ bgcolor: "orange", borderRadius: '0 5px 5px 0 ' }}>
+                    <SearchIcon></SearchIcon>
+                  </IconButton>
+                </Box>
 
-              <div className='s_suggestion'>
-                {search.length > 0 &&
-                  <ul className='s_suggestion_box'>
-                    {
-                      fetchData?.filter((val) =>
-                        val.author.toLowerCase().includes(search) || val.title.toLowerCase().includes(search) || val.category.toLowerCase().includes(search)
+                <div className='s_suggestion'>
+                  {search.length > 0 &&
+                    <ul className='s_suggestion_box'>
+                      {
+                        fetchData?.filter((val) =>
+                          val.author.toLowerCase().includes(search) || val.title.toLowerCase().includes(search) || val.category.toLowerCase().includes(search)
 
-                      )
-                        .slice(0, 9)
-                        .map((book) => {
-                          return <>
-                            <li className='box_ul_li' onClick={() => { searchBook(book.title, book._id) }} >
-                              <p className='book_title'>
-                                <SearchIcon sx={{ fontSize: "16px", marginRight: "5px" }}></SearchIcon>
-                                {`${book.title}`}</p>
-                              <p className='Book_author'>{`by ${book.author}`}</p>
-                            </li>
-                          </>
-                        })
-                    }
-                  </ul>
-                }
+                        )
+                          .slice(0, 9)
+                          .map((book) => {
+                            return <>
+                              <li className='box_ul_li' onClick={() => { searchBook(book.title, book._id) }} >
+                                <p className='book_title'>
+                                  <SearchIcon sx={{ fontSize: "16px", marginRight: "5px" }}></SearchIcon>
+                                  {`${book.title}`}</p>
+                                <p className='Book_author'>{`by ${book.author}`}</p>
+                              </li>
+                            </>
+                          })
+                      }
+                    </ul>
+                  }
+                </div>
+
               </div>
-
-            </div>
+            </>
 
 
 

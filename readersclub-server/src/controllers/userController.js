@@ -1,5 +1,7 @@
 const cartModel = require("../models/cartModel");
 const userModel = require("../models/userModel")
+const bcrypt = require("bcrypt");
+const otpGen = require("otp-generator")
 const jwt = require('jsonwebtoken')
 
 //<-------------------------------------------- Create User API ------------------------------------------->
@@ -21,12 +23,16 @@ const createUser = async function (req, res) {
 
 		//  ---------checking uniqueness of email ---------
 		// let email_in_DB = await userModel.create//({ email: email })
-		let email_in_DB = await userModel.findOne({ email: email })
+		let email_in_DB = await userModel.findOne({ email: email.toLowerCase() })
 		if (email_in_DB) return res.status(409).send({ status: false, message: "Email is already registered" })
 
 
+		// hasshing the password using Bcrypt
+		hashPassword = await bcrypt.hash(password.trim(), 5)
+
+
 		//  -------------- creating new user --------------
-		const newUser = await userModel.create({ fullname: fullname.toLowerCase(), phone, email, password })
+		const newUser = await userModel.create({ fullname: fullname.toLowerCase(), phone, email: email.toLowerCase(), password: hashPassword })
 
 		if (!newUser) {
 			return res.status(400).send({ status: false, message: "User Registration failed!!" })
@@ -73,31 +79,34 @@ const userLogin = async function (req, res) {
 
 
 		// ------------------ api call ------------------
-		let user = await userModel.findOne({ email, isDeleted: false });
+		let user = await userModel.findOne({ email });
+
 		if (!user) return res.status(401).json({ status: false, message: "User not fonud!" })
 
-		if (password != user.password) return res.status(401).json({ status: false, message: "Wrong password!" })
+		// password varification using Bcrypt
+		bcrypt.compare(password, user.password, function (err, result) {
+			if (!result) {
+				return res
+					.status(401)
+					.send({ success: false, message: "Wrong password!" });
+			} else {
+				let token = jwt.sign(
+					{
+						userId: user._id.toString(),
+						userName: user.fullname,
+						exp: Math.floor(Date.now() / 1000) + (60 * 60 * 24), // After 24 hour it will expire 
+						iat: Math.floor(Date.now() / 1000)
+					}, "this is a very secret key $#@54gs2dfGS^35t");
+
+				res.setHeader("x-api-key", token);
+
+				return res.status(200).json({ status: true, message: "Login successfully.", token, userName: user.fullname, email: user.email });
+			}
+		})
 
 
-		let token = jwt.sign(
-			{
-				userId: user._id.toString(),
-				userName: user.fullname,
-				exp: Math.floor(Date.now() / 1000) + (60 * 60 * 24), // After 24 hour it will expire 
-				iat: Math.floor(Date.now() / 1000)
-			}, "FunctionUp Group No 57");
 
-		res.setHeader("x-api-key", token);
 
-		// let data = {
-		// 	token: token,
-		// 	userId: user._id.toString(),
-		// 	userName: user.fullname,
-		// 	exp: Math.floor(Date.now() / 1000) + (60 * 60 * 24), // After 24 hour it will expire 
-		// 	iat: Math.floor(Date.now() / 1000)
-		// }
-
-		res.status(200).json({ status: true, message: "Login successfully.", token });
 	}
 	catch (err) {
 		res.status(500).send({ status: false, message: err.message })
@@ -105,9 +114,67 @@ const userLogin = async function (req, res) {
 
 }
 
+//<-------------------------------------------- Reset Password API ------------------------------------------->
+const generateOTP = async function (req, res) {
+	try {
+		// console.log(req.body);
+		const { email, password } = req.body
+
+		if (Object.keys(req.body).length == 0) return res.status(400).send({ status: false, message: "Email and Password required!!" })
 
 
-module.exports = { createUser, userLogin }
+		let OTP = otpGen.generate(6, { digits: true, upperCaseAlphabets: false, lowerCaseAlphabets: false, specialChars: false }).toString()
+
+		// console.log("OTP generated - ", OTP)
+
+		// ------------------ api call ------------------
+		let user = await userModel.findOneAndUpdate({ email }, { otp: OTP }, { new: true });
+
+		if (!user) return res.status(404).json({ status: false, message: "User not fonud!" })
+
+		// console.log(user);
+
+		hashPassword = await bcrypt.hash(password.trim(), 5)
+		// console.log('hashPassword', hashPassword);
+
+		return res.status(200).send({ status: true, message: user.otp, email: user.email, pass: hashPassword })
+	}
+
+	catch (err) {
+		return res.status(500).send({ status: false, message: err.message })
+	}
+}
+//<-------------------------------------------- Reset Password API ------------------------------------------->
+const resetPassword = async function (req, res) {
+	try {
+		// console.log(req.body);
+		const { email, typedOTP, pass } = req.body
+
+		if (Object.keys(req.body).length == 0) return res.status(400).send({ status: false, message: "OTP is required!!" })
+
+		// ------------------ api call ------------------
+		let user = await userModel.findOne({ email });
+
+		if (typedOTP !== user.otp) {
+			return res.status(401).json({ status: false, message: "Wrong OTP!" })
+		}
+		let updatedPassword = await userModel.findOneAndUpdate({ email }, { password: pass, otp: false }, { new: true });
+
+		// if (!updatedPassword) return res.status(400).json({ status: false, message: "Wrong OTP!" })
+
+		// console.log(user);
+
+		return res.status(200).send({ status: true, message: 'password reset successfully' })
+	}
+
+	catch (err) {
+		return res.status(500).send({ status: false, message: err.message })
+	}
+}
+
+
+
+module.exports = { createUser, userLogin, generateOTP, resetPassword }
 
 
 

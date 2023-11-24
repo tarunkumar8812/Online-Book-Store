@@ -8,6 +8,7 @@
     justify-content: space-between;
     position: relative;
 }
+
 .s_suggestion {
     position: absolute;
     display: flex;

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router()
-const { createUser, userLogin } = require('../controllers/userController')
+const { createUser, userLogin, generateOTP, resetPassword } = require('../controllers/userController')
 const { getAllBooks, createBook } = require("../controllers/bookController.js");
 const { addToCart, getCart, deleteCartItem, updateCartItem } = require("../controllers/cartController");
 const { authentication } = require("../middleware/auth");
@@ -17,8 +17,13 @@ router.post("/user/createUser", createUser)
 
 router.post('/user/login', userLogin)
 
+router.post('/user/generateOTP', generateOTP)
+
+router.post('/user/resetPassword', resetPassword)
 
 
+
+//<--------------------------- Book API's ---------------------------->
 router.post('/user/createBook', createBook)
 
 router.get('/user/getAllBooks', getAllBooks)

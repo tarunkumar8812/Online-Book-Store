@@ -41,16 +41,13 @@ const LoginForm = () => {
     const handleFocus = () => {
         setFocused(true)
     }
+
     // ----------------- handle user login -----------------
-
-
-
-
     const handleSubmit = async (e) => {
         e.preventDefault()
         authDispatch({ type: "LOGIN_START" })
-
-        await axios.post('https://onlinebookstoreserver.vercel.app/user/login', {
+        // await axios.post('http://localhost:5000/user/login', {
+            await axios.post('https://onlinebookstoreserver.vercel.app/user/login', {
             ...credentials
         }).then((result) => {
             // window.location.reload()
@@ -69,8 +66,8 @@ const LoginForm = () => {
 
     return (
         <div className='container'>
-            <Box sx={{  bgcolor: 'white', display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", margin: "auto" }} >
-                <p className='logo' onClick={()=>{navigate('/')}}>  Readers Club </p>
+            <Box sx={{ bgcolor: 'white', display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", margin: "auto" }} >
+                <p className='logo' onClick={() => { navigate('/') }}>  Readers Club </p>
             </Box>
             <h3 className='form_heading'>Login Form</h3>
             <form className='formControl' method='post' onSubmit={(e) => { handleSubmit(e) }}>
