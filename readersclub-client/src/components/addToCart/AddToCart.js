@@ -33,7 +33,7 @@ const AddToCart = () => {
 
   // const handleQuantity = async (bookId, quantity) => {
   //   // api calling using axios
-  // await axios.post('https://bookmanagementserver.onrender.com/user/updateCartItem', {
+  // await axios.post('https://onlinebookstoreserver.vercel.app/user/updateCartItem', {
   // //   await axios.post('http://localhost:5000/user/updateCartItem', {
   //     token: user,
   //     bookIdToUpdate: bookId,
@@ -85,7 +85,7 @@ const AddToCart = () => {
 
     const fetchData = async () => {
       // api calling using axios
-      await axios.post('https://bookmanagementserver.onrender.com/user/deleteCartItem', {
+      await axios.post('https://onlinebookstoreserver.vercel.app/user/deleteCartItem', {
         // await axios.post('http://localhost:5000/user/deleteCartItem', {
         token: user,
         toDelete

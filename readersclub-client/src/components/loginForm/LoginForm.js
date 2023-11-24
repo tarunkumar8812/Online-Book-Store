@@ -50,7 +50,7 @@ const LoginForm = () => {
         e.preventDefault()
         authDispatch({ type: "LOGIN_START" })
 
-        await axios.post('https://bookmanagementserver.onrender.com/user/login', {
+        await axios.post('https://onlinebookstoreserver.vercel.app/user/login', {
             ...credentials
         }).then((result) => {
             // window.location.reload()

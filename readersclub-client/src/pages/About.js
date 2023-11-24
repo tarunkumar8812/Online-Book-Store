@@ -7,7 +7,7 @@ const About = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <NotFound code={503} message={"Page is under Maintenance"} briefMessage={'The link you followed may be broken, or the page is under Maintenance.'}></NotFound>
+            <div style={{textAlign:"center"}}><NotFound code={503} message={"Under Maintenance"} briefMessage={'The link you followed may be broken, or the page is under Maintenance.'}></NotFound></div>
             <Footer></Footer>
         </div>
     )

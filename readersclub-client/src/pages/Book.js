@@ -16,7 +16,7 @@ const Book = () => {
     useEffect(() => {
         const fetchData = async () => {
             // api calling using axios
-            const res = await axios.get(`https://bookmanagementserver.onrender.com/user/getAllBooks`)
+            const res = await axios.get(`https://onlinebookstoreserver.vercel.app/user/getAllBooks`)
             // const res = await axios.get(`http://localhost:5000/user/getAllBooks`)
             setLoading(false)
             setData(res.data.bookList)

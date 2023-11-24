@@ -70,7 +70,7 @@ const SignUpForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         // await axios.post('http://localhost:5000/user/createUser', {
-        await axios.post('https://bookmanagementserver.onrender.com/user/createUser', {
+        await axios.post('https://onlinebookstoreserver.vercel.app/user/createUser', {
             ...values
         }).then((result) => {
             // window.location.reload()

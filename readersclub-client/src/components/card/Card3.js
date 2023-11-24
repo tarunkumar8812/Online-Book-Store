@@ -28,7 +28,7 @@ const Card3 = ({ book, ind }) => {
             navigate("/login")
         }
         // api calling using axios
-        await axios.post(`https://bookmanagementserver.onrender.com/user/addToCart`, {
+        await axios.post(`https://onlinebookstoreserver.vercel.app/user/addToCart`, {
             // await axios.post(`http://localhost:5000/user/addToCart`, {
             token: user,
             bookId: book._id,

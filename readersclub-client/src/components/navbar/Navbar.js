@@ -56,7 +56,7 @@ const Navbar = () => {
   useEffect(() => {
     const fetchData = async () => {
       // api calling using axios
-      const res = await axios.get(`https://bookmanagementserver.onrender.com/user/getAllBooks`)
+      const res = await axios.get(`https://onlinebookstoreserver.vercel.app/user/getAllBooks`)
       setFetchData(res.data.bookList)
     }
     fetchData()
