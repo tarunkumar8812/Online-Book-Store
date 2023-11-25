@@ -14,7 +14,7 @@ const authentication = async function (req, res, next) {
     // this lines not running at any time
     // if (!token) return res.status(400).send({ status: false, message: "required token" });
 
-    jwt.verify(token, "FunctionUp Group No 57", function (err, decoded) {
+    jwt.verify(token, "this is a very secret key $#@54gs2dfGS^35t", function (err, decoded) {
       if (err) {
         console.log(err.message);
 

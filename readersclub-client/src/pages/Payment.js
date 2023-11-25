@@ -7,7 +7,7 @@ const Payment = () => {
     return (
         <div>
             {/* <Navbar></Navbar> */}
-            <NotFound code={503} message={'Temporarily Out of Service'} briefMessage={'The link you followed may be broken, or the page may have been out of service.'}></NotFound>
+            <NotFound code={503} message={'Out of Service'} briefMessage={'The link you followed may be broken, or the page may have been out of service.'}></NotFound>
             {/* <Footer></Footer> */}
         </div>
     )
