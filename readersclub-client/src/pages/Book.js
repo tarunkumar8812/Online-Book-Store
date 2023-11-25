@@ -24,7 +24,8 @@ const Book = () => {
         fetchData()
     }, [])
 
-    const selectedBook = data.filter((book => book._id === location?.state?.id))
+    const selectedBook = data.filter(book => book._id === location?.state?.id)
+
     const book = selectedBook[0]
 
     const sameGenre = data.filter((books => books?.genre || '' === book?.genre || ""))
