@@ -20,11 +20,15 @@
 }
 
 .carousel-img {
+    display: block;
+
     width: 100%;
     height: 100%;
     /* height: max-content; */
 }
-
+.hide{
+    display: none;
+}
 .arrow{
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.05);

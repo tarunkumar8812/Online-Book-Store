@@ -1,31 +1,36 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { arr } from '../../staticData/data'
 import './carousel.css'
 const Carousel = ({ index }) => {
 
-    const arr = [
-        { name: "first", desc: "first img desc", imgSrc: "https://www.bookswagon.com/bannerimages/86_inr.jpg?v=2.5" },
-        { name: "second", desc: "second img desc", imgSrc: "https://www.bookswagon.com/bannerimages/88_inr.jpg" },
-        { name: "third", desc: "third img desc", imgSrc: "https://www.bookswagon.com/bannerimages/80_inr.jpg?v=2.1" },
-        { name: "fourth", desc: "fourth img desc", imgSrc: "https://www.bookswagon.com/bannerimages/79_inr.jpg?v=2.5" },
-        { name: "fifth", desc: "fifth img desc", imgSrc: "https://bc-img.s3.ap-south-1.amazonaws.com/web_banners/2023090261162.webp" }
-    ]
+    // const arr = [
+    //     { name: "first", desc: "first img desc", imgSrc: "https://www.bookswagon.com/bannerimages/86_inr.jpg?v=2.5" },
+    //     { name: "second", desc: "second img desc", imgSrc: "https://www.bookswagon.com/bannerimages/88_inr.jpg" },
+    //     { name: "third", desc: "third img desc", imgSrc: "https://www.bookswagon.com/bannerimages/80_inr.jpg?v=2.1" },
+    //     { name: "fourth", desc: "fourth img desc", imgSrc: "https://www.bookswagon.com/bannerimages/79_inr.jpg?v=2.5" },
+    //     { name: "fifth", desc: "fifth img desc", imgSrc: "https://bc-img.s3.ap-south-1.amazonaws.com/web_banners/2023090261162.webp" }
+    // ]
 
     let [display, setDisplay] = useState(index || 0)
 
     const handleArrowClick = (direction) => {
-        if (direction === "r") {
-            if (display < arr.length - 1) {
-                setDisplay(display += 1)
-            } else { setDisplay(0) }
-
-        } else if (direction === "l") {
-            if (display >= 1) {
-                setDisplay(display -= 1)
-            } else {
-                setDisplay(arr.length - 1)
-            }
+        if (direction === "l") {
+            display >= 1 ? setDisplay(display - 1) : setDisplay(arr.length - 1)
+        } else {
+            setDisplay((display + 1) % (arr.length))
         }
     }
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            handleArrowClick("r")
+        }, 5000)
+
+        return (() => {
+            clearTimeout(timer)
+        })
+    }, [display])
+
 
     return (
         <>
@@ -35,8 +40,14 @@ const Carousel = ({ index }) => {
 
                 <div className='main-slide'>
                     <div className='imgBox'>
-                        <img className='carousel-img' src={arr[display]?.imgSrc} alt='iSrc' />
-                        {/* <lable className="lab">Legend 1</lable> */}
+                        {arr.map((images, i) => {
+                            return (<>
+                                <img key={images.name} className={i === display ? "carousel-img" : "hide"} src={images.imgSrc} alt='iSrc' />
+                                {/* <lable className="lab">{arr[display].desc}</lable> */}
+                            </>)
+                        })}
+
+
                     </div>
 
 
